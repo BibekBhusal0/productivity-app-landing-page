@@ -14,6 +14,12 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import ThemeSwitch from "./theme-switcher";
 
+const motionProps = {
+  initial: { opacity: 0, y: -10 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 },
+};
+
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -39,12 +45,7 @@ export const Navbar: React.FC = () => {
           className="md:hidden"
         />
         <NavbarBrand>
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2"
-          >
+          <motion.div {...motionProps} className="flex items-center gap-2">
             <Icon icon="lucide:focus" className="text-2xl text-primary" />
             <p className="text-xl font-bold">Focusly</p>
           </motion.div>
@@ -54,11 +55,7 @@ export const Navbar: React.FC = () => {
       <NavbarContent className="hidden gap-4 md:flex" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item.name}-${index}`}>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-            >
+            <motion.div {...motionProps} transition={{ ...motionProps.transition, delay: 0.1 + index * 0.1 }}>
               <Link color="foreground" href={item.href} className="text-sm font-medium">
                 {item.name}
               </Link>
@@ -67,32 +64,16 @@ export const Navbar: React.FC = () => {
         ))}
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
+        <motion.div {...motionProps} className = 'flex gap-3 items-center' transition={{ ...motionProps.transition, delay: 0.2 }}>
+          <NavbarItem className="">
             <ThemeSwitch />
-          </motion.div>
-        </NavbarItem>
-        <NavbarItem className="">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
+          </NavbarItem>
+          <NavbarItem className="">
             <Link href="#" color="foreground" className="text-sm font-medium">
               Log in
             </Link>
-          </motion.div>
-        </NavbarItem>
-        <NavbarItem>
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
+          </NavbarItem>
+          <NavbarItem>
             <Button
               as={Link}
               color="primary"
@@ -103,8 +84,8 @@ export const Navbar: React.FC = () => {
             >
               Sign Up
             </Button>
-          </motion.div>
-        </NavbarItem>
+          </NavbarItem>
+        </motion.div>
       </NavbarContent>
 
       <NavbarMenu className="pt-6">
@@ -125,8 +106,8 @@ export const Navbar: React.FC = () => {
             Log in
           </Link>
         </NavbarMenuItem>
-
       </NavbarMenu>
     </HeroNavbar>
   );
 };
+
