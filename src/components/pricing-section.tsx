@@ -38,9 +38,8 @@ export const PricingSection: React.FC = () => {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <div className = 'flex-center w-full'><Pricing outerRadius="rounded"
-            width = 'xl'
-            padding = 'large'
+          <div className = 'flex-center w-full'><Pricing 
+            className ="lg:w-[768px] xl:w-[1024px]"
             plans={[
               {
                 monthlyPrice: '$0.00',
@@ -77,43 +76,10 @@ interface PricingProps {
   plans: Plan[];
   onPlanSelect?: (plan: string) => void;
   onCycleChange?: (cycle: "Monthly" | "Yearly") => void;
-  width?: "sm" | "md" | "lg" | "xl";
-  outerRadius?: "normal" | "rounded" | "moreRounded";
-  padding?: "small" | "medium" | "large";
+  className? : string
 }
 
-const widthClasses = {
-  sm: "w-full sm:w-[300px]",
-  md: "w-full sm:w-[300px] md:w-[500px]",
-  lg: "w-full sm:w-[300px] md:w-[500px] lg:w-[768px]",
-  xl: "w-full sm:w-[300px] md:w-[500px] lg:w-[768px] xl:w-[1024px]",
-};
-
-const outerRadiusClasses = {
-  normal: "rounded-[16px]",
-  rounded: "rounded-[24px]",
-  moreRounded: "rounded-[32px]",
-};
-
-const paddingClasses = {
-  small: "p-2",
-  medium: "p-3",
-  large: "p-4",
-};
-
-const innerRadiusClasses = {
-  normal: "rounded-xl",
-  rounded: "rounded-2xl",
-  moreRounded: "rounded-3xl",
-};
-
-
-export default function Pricing({
-  plans,
-  width = "lg",
-  outerRadius = "rounded",
-  padding = "medium",
-}: PricingProps) {
+export default function Pricing({ plans, className }: PricingProps) {
   const [selectedPlan, setSelectedPlan] = React.useState("Basic");
   const [billing, setBilling] = React.useState<"Monthly" | "Yearly">("Monthly");
 
@@ -124,10 +90,7 @@ export default function Pricing({
   return (
     <Card
       className={cn(
-        "mx-auto",
-        widthClasses[width],
-        outerRadiusClasses[outerRadius],
-        paddingClasses[padding],
+        "mx-auto p-5 rounded-lg w-full",className
       )}
     >
       
@@ -142,7 +105,7 @@ export default function Pricing({
           key={plan.name}
           className={cn(
             "relative mb-3 cursor-pointer border-2 border-divider p-4",
-            innerRadiusClasses[outerRadius],
+            'rounded-lg',
             selectedPlan === plan.name ? "bg-content2" : "bg-default-50",
           )}
           onClick={() => handlePlanSelect(plan.name)}
@@ -155,7 +118,7 @@ export default function Pricing({
               <motion.div
                 className={cn(
                   "absolute inset-0 border-4 border-primary",
-                  innerRadiusClasses[outerRadius],
+                  'rounded-lg',
                 )}
                 layoutId="selectedPlanBorder"
                 initial={{ opacity: 0 }}
