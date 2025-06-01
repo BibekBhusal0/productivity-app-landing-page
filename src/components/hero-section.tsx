@@ -22,13 +22,13 @@ export const HeroSection: React.FC = () => {
           "bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px] "
         )} />
 
-        {/* <ThemeAwareSparkles
+        <ThemeAwareSparkles
           density={500}
           direction = 'up'
           minSize={1.4}
           size={4}
           className='absolute -z-30 inset-x-0 top-0 h-3/4 w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]'
-        /> */}
+        />
 
       </div>
 
@@ -43,8 +43,8 @@ export const HeroSection: React.FC = () => {
           initial = {{scale : 0 , opacity : 0}}
           animate = {{scale : 1 , opacity: 1}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xl mt-6 size-20 rounded-full bg-primary-700 origin-center">
-          <Icon icon="lucide:focus" className="text-primary" />
+          className="text-xl mt-6 size-20 rounded-full bg-primary-700 origin-center flex-center">
+          <Icon icon="lucide:focus"  width = {50} className="text-primary" />
         </motion.div>
         <motion.h1
           className="gradient-text text-4xl font-bold md:text-5xl lg:text-6xl"

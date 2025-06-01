@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@heroui/react";
+import { Button, Link } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
@@ -47,7 +47,8 @@ export const Footer: React.FC = () => {
     { name: "Twitter", icon: "lucide:twitter", href: "#" },
     { name: "Instagram", icon: "lucide:instagram", href: "#" },
     { name: "GitHub", icon: "lucide:github", href: "#" },
-    { name: "GitHub", icon: "lucide:linked-in", href: "#" },
+    { name: "Linked In", icon: "lucide:linkedin", href: "#" },
+    { name: "Facebook", icon: "lucide:facebook", href: "#" },
   ];
 
   const container = {
@@ -93,11 +94,9 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
-                <Link key={index} href={social.href} aria-label={social.name}>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-content2 transition-colors hover:bg-content3">
+                <Button key={index} as = {Link} href={social.href} isIconOnly color= 'primary' radius = 'full' variant = 'light' aria-label={social.name}>
                     <Icon icon={social.icon} className="text-xl" />
-                  </div>
-                </Link>
+                </Button>
               ))}
             </div>
           </motion.div>
