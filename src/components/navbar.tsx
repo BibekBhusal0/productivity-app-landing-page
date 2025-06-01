@@ -122,6 +122,6 @@ export const Navbar: React.FC = () => {
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>
-    </HeroNavbar><AuthModal {...{isOpen, onOpenChange, initialMode: authMode}} /></>
+    </HeroNavbar><AuthModal {...{ isOpen, onOpenChange, initialMode: authMode, showTabs: false }} /></>
   );
 };

@@ -12,25 +12,25 @@ import {
   Link
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
 
 interface AuthModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
-  initialMode: "login" | "signup";
+  initialMode?: "login" | "signup";
+  showTabs?: boolean
 }
 
 export const AuthModal: React.FC<AuthModalProps> = ({
   isOpen,
   onOpenChange,
-  initialMode
+  initialMode = 'login',
+  showTabs = true
+
 }) => {
   const [selected, setSelected] = React.useState(initialMode);
 
   React.useEffect(() => {
-    if (isOpen) {
-      setSelected(initialMode);
-    }
+    if (isOpen) setSelected(initialMode);
   }, [isOpen, initialMode]);
 
   return (
@@ -59,31 +59,24 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               </p>
             </ModalHeader>
             <ModalBody className="px-6 py-4">
-              <Tabs
+              {showTabs && <Tabs
                 selectedKey={selected}
                 onSelectionChange={setSelected as any}
                 aria-label="Authentication options"
-                variant="underlined"
-                classNames={{
-                  tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
-                  cursor: "w-full bg-primary",
-                  tab: "max-w-fit px-0 h-12",
-                  tabContent: "group-data-[selected=true]:text-primary"
-                }}
               >
-                <Tab
-                  key="login"
-                  title="Login"
-                >
-                  <LoginForm onClose={onClose} />
-                </Tab>
-                <Tab
-                  key="signup"
-                  title="Sign Up"
-                >
-                  <SignupForm onClose={onClose} />
-                </Tab>
-              </Tabs>
+                <Tab key="login" title="Login"/>
+                <Tab key="signup" title="Sign Up"/>
+              </Tabs>}
+              <div  className="py-4 flex flex-col gap-2">
+      <SocialButtons />
+
+      <div className="flex items-center gap-2">
+        <Divider className="flex-1" />
+        <span className="text-xs text-foreground-500">OR</span>
+        <Divider className="flex-1" />
+      </div>
+                {selected === 'login'? <LoginForm onClose = {onClose} /> : <SignupForm onClose = { onClose } />}</div>
+              
             </ModalBody>
           </>
         )}
@@ -98,16 +91,18 @@ const SocialButtons: React.FC = () => {
       <Button
         startContent={<Icon icon="logos:google-icon" />}
         variant="bordered"
+        size= 'lg'
         className="w-full"
       >
         Continue with Google
       </Button>
       <Button
-        startContent={<Icon icon="logos:github-icon" />}
+        startContent={<Icon icon="logos:facebook" />}
+        size= 'lg'
         variant="bordered"
         className="w-full"
       >
-        Continue with GitHub
+        Continue with Facebook
       </Button>
     </div>
   );
@@ -117,6 +112,7 @@ const LoginForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,20 +126,6 @@ const LoginForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3 }}
-      className="py-4 flex flex-col gap-4"
-    >
-      <SocialButtons />
-
-      <div className="flex items-center gap-2">
-        <Divider className="flex-1" />
-        <span className="text-xs text-foreground-500">OR</span>
-        <Divider className="flex-1" />
-      </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
         <Input
@@ -160,7 +142,8 @@ const LoginForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <Input
           label="Password"
           placeholder="Enter your password"
-          type="password"
+          type={isPasswordVisible? 'text' : "password" }
+        endContent = {<button onClick = {(e) =>{e.preventDefault() ; setIsPasswordVisible(prev=> !prev) }} ><Icon className = 'text-xl' icon = {isPasswordVisible? "lucide:eye-off": "lucide:eye"} /></button>}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           variant="bordered"
@@ -184,7 +167,6 @@ const LoginForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           {isLoading ? "Logging in..." : "Login"}
         </Button>
       </form>
-    </motion.div>
   );
 };
 
@@ -193,6 +175,7 @@ const SignupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -206,21 +189,6 @@ const SignupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.3 }}
-      className="py-4 flex flex-col gap-4"
-    >
-      <SocialButtons />
-
-      <div className="flex items-center gap-2">
-        <Divider className="flex-1" />
-        <span className="text-xs text-foreground-500">OR</span>
-        <Divider className="flex-1" />
-      </div>
-
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
         <Input
           label="Full Name"
@@ -246,7 +214,8 @@ const SignupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <Input
           label="Password"
           placeholder="Create a password"
-          type="password"
+          type={isPasswordVisible? 'text' : "password" }
+        endContent = {<button onClick = {(e) =>{e.preventDefault() ; setIsPasswordVisible(prev=> !prev) }} ><Icon className = 'text-xl' icon = {isPasswordVisible? "lucide:eye-off": "lucide:eye"} /></button>}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           variant="bordered"
@@ -268,6 +237,5 @@ const SignupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           {isLoading ? "Creating account..." : "Create Account"}
         </Button>
       </form>
-    </motion.div>
   );
 };
