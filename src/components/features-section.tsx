@@ -72,8 +72,8 @@ export const FeaturesSection: React.FC = () => {
   };
 
   return (
-    <section id="features" className="section-padding overflow-hidden bg-content1">
-      <div className="container-custom">
+    <section id="features" className="section-padding overflow-x-hidden bg-content1">
+      <div className="container-custom overflow-visible">
         <motion.div
           className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
