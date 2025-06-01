@@ -156,10 +156,8 @@ export const TestimonialsSection: React.FC = () => {
                       {[...Array(5)].map((_, i) => (
                         <Icon
                           key={i}
-                          icon="lucide:star"
-                          className={
-                            i < testimonial.rating ? "text-warning" : "text-foreground-300"
-                          }
+                          icon={ i < testimonial.rating ? "fluent:star-24-filled" : "fluent:star-24-regular" }
+                          className='text-warning'
                         />
                       ))}
                     </div>
