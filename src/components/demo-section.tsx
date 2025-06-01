@@ -9,40 +9,43 @@ export const DemoSection: React.FC = () => {
   const tabContent = {
     tasks: {
       title: "Smart Task Management",
-      description: "Organize your tasks with intelligent categories, priorities, and deadlines. Drag and drop to rearrange, set recurring tasks, and track your progress.",
+      description:
+        "Organize your tasks with intelligent categories, priorities, and deadlines. Drag and drop to rearrange, set recurring tasks, and track your progress.",
       image: "https://img.heroui.chat/image/dashboard?w=800&h=500&u=4",
       features: [
         { icon: "lucide:check-circle", text: "Drag & drop organization" },
         { icon: "lucide:repeat", text: "Recurring tasks" },
-        { icon: "lucide:tag", text: "Smart categorization" }
-      ]
+        { icon: "lucide:tag", text: "Smart categorization" },
+      ],
     },
     calendar: {
       title: "Intuitive Calendar",
-      description: "Plan your day, week, and month with a beautiful calendar that integrates with your tasks and goals. Set time blocks for deep work and see your schedule at a glance.",
+      description:
+        "Plan your day, week, and month with a beautiful calendar that integrates with your tasks and goals. Set time blocks for deep work and see your schedule at a glance.",
       image: "https://img.heroui.chat/image/calendar?w=800&h=500&u=2",
       features: [
         { icon: "lucide:calendar", text: "Multiple views" },
         { icon: "lucide:clock", text: "Time blocking" },
-        { icon: "lucide:share", text: "Calendar sharing" }
-      ]
+        { icon: "lucide:share", text: "Calendar sharing" },
+      ],
     },
     timer: {
       title: "Focus Timer",
-      description: "Boost your productivity with customizable Pomodoro timers. Set work and break intervals, track your focus sessions, and eliminate distractions.",
+      description:
+        "Boost your productivity with customizable Pomodoro timers. Set work and break intervals, track your focus sessions, and eliminate distractions.",
       image: "https://img.heroui.chat/image/dashboard?w=800&h=500&u=5",
       features: [
         { icon: "lucide:timer", text: "Customizable intervals" },
         { icon: "lucide:bar-chart", text: "Focus analytics" },
-        { icon: "lucide:bell-off", text: "Distraction blocking" }
-      ]
-    }
+        { icon: "lucide:bell-off", text: "Distraction blocking" },
+      ],
+    },
   };
 
   return (
     <section id="demo" className="section-padding bg-content2">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +56,8 @@ export const DemoSection: React.FC = () => {
             See <span className="gradient-text">Focusly</span> in Action
           </h2>
           <p className="text-foreground-600 max-w-2xl mx-auto">
-            Explore the key features that make Focusly the ultimate productivity tool
+            Explore the key features that make Focusly the ultimate productivity
+            tool
           </p>
         </motion.div>
 
@@ -63,21 +67,22 @@ export const DemoSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Tabs 
-            aria-label="Focusly Features" 
-            selectedKey={selected} 
+          <Tabs
+            aria-label="Focusly Features"
+            selectedKey={selected}
             onSelectionChange={setSelected as any}
             color="primary"
             variant="underlined"
             classNames={{
-              tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+              tabList:
+                "gap-6 w-full relative rounded-none p-0 border-b border-divider",
               cursor: "w-full bg-primary",
               tab: "max-w-fit px-0 h-12",
-              tabContent: "group-data-[selected=true]:text-primary"
+              tabContent: "group-data-[selected=true]:text-primary",
             }}
           >
-            <Tab 
-              key="tasks" 
+            <Tab
+              key="tasks"
               title={
                 <div className="flex items-center gap-2">
                   <Icon icon="lucide:check-square" />
@@ -87,8 +92,8 @@ export const DemoSection: React.FC = () => {
             >
               <DemoTabContent content={tabContent.tasks} />
             </Tab>
-            <Tab 
-              key="calendar" 
+            <Tab
+              key="calendar"
               title={
                 <div className="flex items-center gap-2">
                   <Icon icon="lucide:calendar" />
@@ -98,8 +103,8 @@ export const DemoSection: React.FC = () => {
             >
               <DemoTabContent content={tabContent.calendar} />
             </Tab>
-            <Tab 
-              key="timer" 
+            <Tab
+              key="timer"
               title={
                 <div className="flex items-center gap-2">
                   <Icon icon="lucide:timer" />
@@ -133,7 +138,7 @@ const DemoTabContent: React.FC<DemoTabContentProps> = ({ content }) => {
           <div className="flex flex-col gap-6">
             <h3 className="text-2xl font-semibold">{content.title}</h3>
             <p className="text-foreground-600">{content.description}</p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
               {content.features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-2">
@@ -143,7 +148,7 @@ const DemoTabContent: React.FC<DemoTabContentProps> = ({ content }) => {
               ))}
             </div>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}

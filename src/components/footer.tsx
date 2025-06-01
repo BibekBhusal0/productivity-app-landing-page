@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
         { name: "Pricing", href: "#pricing" },
         { name: "Integrations", href: "#integrations" },
         { name: "Roadmap", href: "#" },
-      ]
+      ],
     },
     {
       title: "Resources",
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
         { name: "Documentation", href: "#" },
         { name: "Guides", href: "#" },
         { name: "Help Center", href: "#" },
-      ]
+      ],
     },
     {
       title: "Company",
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
         { name: "Careers", href: "#" },
         { name: "Contact", href: "#" },
         { name: "Media Kit", href: "#" },
-      ]
+      ],
     },
     {
       title: "Legal",
@@ -39,8 +39,8 @@ export const Footer: React.FC = () => {
         { name: "Privacy Policy", href: "#" },
         { name: "Cookie Policy", href: "#" },
         { name: "GDPR", href: "#" },
-      ]
-    }
+      ],
+    },
   ];
 
   const socialLinks = [
@@ -55,27 +55,27 @@ export const Footer: React.FC = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   return (
     <footer className="bg-background border-t border-divider pt-16 pb-8">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-5 gap-8"
           variants={container}
           initial="hidden"
@@ -88,7 +88,8 @@ export const Footer: React.FC = () => {
               <span className="font-bold text-xl">Focusly</span>
             </div>
             <p className="text-foreground-600 mb-6 max-w-xs">
-              The all-in-one productivity app that helps you focus, organize tasks, and achieve more in less time.
+              The all-in-one productivity app that helps you focus, organize
+              tasks, and achieve more in less time.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -107,8 +108,8 @@ export const Footer: React.FC = () => {
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link 
-                      href={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-foreground-600 hover:text-foreground transition-colors text-sm"
                     >
                       {link.name}
@@ -120,7 +121,7 @@ export const Footer: React.FC = () => {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={item}
           initial="hidden"
           whileInView="show"
@@ -131,13 +132,22 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} Focusly. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-sm text-foreground-500 hover:text-foreground">
+            <Link
+              href="#"
+              className="text-sm text-foreground-500 hover:text-foreground"
+            >
               Terms
             </Link>
-            <Link href="#" className="text-sm text-foreground-500 hover:text-foreground">
+            <Link
+              href="#"
+              className="text-sm text-foreground-500 hover:text-foreground"
+            >
               Privacy
             </Link>
-            <Link href="#" className="text-sm text-foreground-500 hover:text-foreground">
+            <Link
+              href="#"
+              className="text-sm text-foreground-500 hover:text-foreground"
+            >
               Cookies
             </Link>
           </div>

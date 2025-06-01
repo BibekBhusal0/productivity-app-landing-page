@@ -8,23 +8,27 @@ export const FeaturesSection: React.FC = () => {
     {
       icon: "lucide:check-square",
       title: "Task Management",
-      description: "Organize tasks with smart categories, priorities, and deadlines. Never miss an important deadline again."
+      description:
+        "Organize tasks with smart categories, priorities, and deadlines. Never miss an important deadline again.",
     },
     {
       icon: "lucide:timer",
       title: "Focus Timer",
-      description: "Boost productivity with customizable Pomodoro timers and focus sessions tailored to your work style."
+      description:
+        "Boost productivity with customizable Pomodoro timers and focus sessions tailored to your work style.",
     },
     {
       icon: "lucide:calendar",
       title: "Daily Planner",
-      description: "Plan your day with an intuitive calendar that adapts to your productivity patterns and energy levels."
+      description:
+        "Plan your day with an intuitive calendar that adapts to your productivity patterns and energy levels.",
     },
     {
       icon: "lucide:bell",
       title: "Smart Reminders",
-      description: "Get intelligent notifications that know when to alert you based on priority and your focus state."
-    }
+      description:
+        "Get intelligent notifications that know when to alert you based on priority and your focus state.",
+    },
   ];
 
   const container = {
@@ -32,27 +36,27 @@ export const FeaturesSection: React.FC = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   return (
     <section id="features" className="section-padding bg-content1">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,14 +64,16 @@ export const FeaturesSection: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Powerful <span className="gradient-text">Features</span> to Boost Your Productivity
+            Powerful <span className="gradient-text">Features</span> to Boost
+            Your Productivity
           </h2>
           <p className="text-foreground-600 max-w-2xl mx-auto">
-            Designed to help you focus, organize, and accomplish more in less time with less stress.
+            Designed to help you focus, organize, and accomplish more in less
+            time with less stress.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={container}
           initial="hidden"

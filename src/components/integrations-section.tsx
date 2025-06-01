@@ -19,27 +19,27 @@ export const IntegrationsSection: React.FC = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   return (
     <section id="integrations" className="section-padding bg-content1">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export const IntegrationsSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12"
           variants={container}
           initial="hidden"
@@ -62,13 +62,16 @@ export const IntegrationsSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {integrations.map((integration, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               variants={item}
               className="flex flex-col items-center gap-3"
             >
               <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900 dark:to-primary-800 rounded-xl shadow-sm border border-divider integration-logo">
-                <Icon icon={integration.icon} className="text-4xl md:text-5xl" />
+                <Icon
+                  icon={integration.icon}
+                  className="text-4xl md:text-5xl"
+                />
               </div>
               <p className="text-sm font-medium">{integration.name}</p>
             </motion.div>

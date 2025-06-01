@@ -10,10 +10,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ["Inter", "sans-serif"],
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
@@ -21,29 +21,29 @@ export default {
   plugins: [
     heroui({
       layout: {
-        dividerWeight: "1px", 
-        disabledOpacity: 0.45, 
+        dividerWeight: "1px",
+        disabledOpacity: 0.45,
         fontSize: {
-          tiny: "0.75rem",   // 12px
+          tiny: "0.75rem", // 12px
           small: "0.875rem", // 14px
           medium: "0.9375rem", // 15px
           large: "1.125rem", // 18px
         },
         lineHeight: {
-          tiny: "1rem", 
-          small: "1.25rem", 
-          medium: "1.5rem", 
-          large: "1.75rem", 
+          tiny: "1rem",
+          small: "1.25rem",
+          medium: "1.5rem",
+          large: "1.75rem",
         },
         radius: {
-          small: "6px", 
-          medium: "8px", 
-          large: "12px", 
+          small: "6px",
+          medium: "8px",
+          large: "12px",
         },
         borderWidth: {
-          small: "1px", 
-          medium: "1px", 
-          large: "2px", 
+          small: "1px",
+          medium: "1px",
+          large: "2px",
         },
       },
       themes: {
@@ -61,20 +61,20 @@ export default {
               800: "#1e40af",
               900: "#1e3a8a",
               DEFAULT: "#2563eb",
-              foreground: "#ffffff"
+              foreground: "#ffffff",
             },
             background: {
-              DEFAULT: "#FFFFFF"
+              DEFAULT: "#FFFFFF",
             },
             content1: {
               DEFAULT: "#FFFFFF",
-              foreground: "#111827"
+              foreground: "#111827",
             },
             content2: {
               DEFAULT: "#F9FAFB",
-              foreground: "#1F2937"
-            }
-          }
+              foreground: "#1F2937",
+            },
+          },
         },
         dark: {
           colors: {
@@ -90,25 +90,25 @@ export default {
               800: "#1e40af",
               900: "#1e3a8a",
               DEFAULT: "#3b82f6",
-              foreground: "#ffffff"
+              foreground: "#ffffff",
             },
             background: {
-              DEFAULT: "#0F172A"
+              DEFAULT: "#0F172A",
             },
             content1: {
               DEFAULT: "#1E293B",
-              foreground: "#F1F5F9"
+              foreground: "#F1F5F9",
             },
             content2: {
               DEFAULT: "#334155",
-              foreground: "#F8FAFC"
+              foreground: "#F8FAFC",
             },
             foreground: {
-              DEFAULT: "#F1F5F9"
-            }
-          }
-        }
-      }
-    })
-  ]
-}
+              DEFAULT: "#F1F5F9",
+            },
+          },
+        },
+      },
+    }),
+  ],
+};

@@ -1,5 +1,15 @@
 import React from "react";
-import { Navbar as HeroNavbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@heroui/react";
+import {
+  Navbar as HeroNavbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { ThemeSwitcher } from "./theme-switcher";
@@ -16,8 +26,8 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <HeroNavbar 
-      isMenuOpen={isMenuOpen} 
+    <HeroNavbar
+      isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
       className="bg-background/70 backdrop-blur-md border-b border-divider"
@@ -29,7 +39,7 @@ export const Navbar: React.FC = () => {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -49,8 +59,8 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
             >
-              <Link 
-                color="foreground" 
+              <Link
+                color="foreground"
                 href={item.href}
                 className="text-sm font-medium"
               >
@@ -60,7 +70,7 @@ export const Navbar: React.FC = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      
+
       <NavbarContent justify="end">
         <NavbarItem className="hidden sm:flex">
           <ThemeSwitcher />
@@ -82,10 +92,10 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <Button 
-              as={Link} 
-              color="primary" 
-              href="#" 
+            <Button
+              as={Link}
+              color="primary"
+              href="#"
               variant="flat"
               className="font-medium"
               startContent={<Icon icon="lucide:log-in" />}
@@ -95,7 +105,7 @@ export const Navbar: React.FC = () => {
           </motion.div>
         </NavbarItem>
       </NavbarContent>
-      
+
       <NavbarMenu className="pt-6">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.name}-${index}`}>
@@ -110,11 +120,7 @@ export const Navbar: React.FC = () => {
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem>
-          <Link
-            color="foreground"
-            className="w-full py-2 text-lg"
-            href="#"
-          >
+          <Link color="foreground" className="w-full py-2 text-lg" href="#">
             Log in
           </Link>
         </NavbarMenuItem>

@@ -5,37 +5,40 @@ import { motion } from "framer-motion";
 
 export const CtaSection: React.FC = () => {
   return (
-    <section id="cta" className="section-padding bg-gradient-to-br from-primary-900 to-primary-700 text-white">
+    <section
+      id="cta"
+      className="section-padding bg-gradient-to-br from-primary-900 to-primary-700 text-white"
+    >
       <div className="container-custom relative overflow-hidden">
         {/* Animated background elements */}
-        <motion.div 
+        <motion.div
           className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full"
-          animate={{ 
-            x: [0, 10, 0], 
+          animate={{
+            x: [0, 10, 0],
             y: [0, -10, 0],
-            scale: [1, 1.05, 1]
+            scale: [1, 1.05, 1],
           }}
-          transition={{ 
-            repeat: Infinity, 
+          transition={{
+            repeat: Infinity,
             duration: 8,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
-        
-        <motion.div 
+
+        <motion.div
           className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full"
-          animate={{ 
-            x: [0, -10, 0], 
+          animate={{
+            x: [0, -10, 0],
             y: [0, 10, 0],
-            scale: [1, 1.05, 1]
+            scale: [1, 1.05, 1],
           }}
-          transition={{ 
-            repeat: Infinity, 
+          transition={{
+            repeat: Infinity,
             duration: 7,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,12 +50,13 @@ export const CtaSection: React.FC = () => {
             Ready to take control of your time?
           </h2>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Join thousands of professionals who have transformed their productivity with Focusly. Start your 14-day free trial today.
+            Join thousands of professionals who have transformed their
+            productivity with Focusly. Start your 14-day free trial today.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               color="default"
               variant="solid"
               className="font-medium text-primary bg-white"
@@ -60,17 +64,17 @@ export const CtaSection: React.FC = () => {
             >
               Start Free Trial
             </Button>
-            
-            <Button 
-              size="lg" 
-              variant="flat" 
+
+            <Button
+              size="lg"
+              variant="flat"
               className="font-medium text-white border-white/30"
               startContent={<Icon icon="lucide:calendar" />}
             >
               Schedule a Demo
             </Button>
           </div>
-          
+
           <p className="text-white/60 text-sm mt-6">
             No credit card required. Cancel anytime.
           </p>

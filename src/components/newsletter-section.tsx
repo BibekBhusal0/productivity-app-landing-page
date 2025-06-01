@@ -12,25 +12,25 @@ export const NewsletterSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
+
     if (!email) {
       setError("Please enter your email address");
       return;
     }
-    
+
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setError("Please enter a valid email address");
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
       setEmail("");
-      
+
       // Reset success message after 3 seconds
       setTimeout(() => {
         setIsSuccess(false);
@@ -52,10 +52,14 @@ export const NewsletterSection: React.FC = () => {
             Stay <span className="gradient-text">Updated</span>
           </h2>
           <p className="text-foreground-600 mb-8">
-            Join 10,000+ productivity enthusiasts and get tips, tricks, and early access to new features
+            Join 10,000+ productivity enthusiasts and get tips, tricks, and
+            early access to new features
           </p>
-          
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-3"
+          >
             <Input
               type="email"
               placeholder="Enter your email"
@@ -70,9 +74,9 @@ export const NewsletterSection: React.FC = () => {
               }
               className="flex-grow"
             />
-            <Button 
-              type="submit" 
-              color="primary" 
+            <Button
+              type="submit"
+              color="primary"
               size="lg"
               isLoading={isSubmitting}
               className="font-medium"
@@ -80,9 +84,9 @@ export const NewsletterSection: React.FC = () => {
               {isSubmitting ? "Subscribing..." : "Subscribe"}
             </Button>
           </form>
-          
+
           {isSuccess && (
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-success mt-4"
@@ -90,7 +94,7 @@ export const NewsletterSection: React.FC = () => {
               Thank you for subscribing! Check your inbox soon.
             </motion.p>
           )}
-          
+
           <p className="text-xs text-foreground-400 mt-4">
             We respect your privacy. Unsubscribe at any time.
           </p>

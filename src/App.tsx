@@ -16,9 +16,11 @@ import { useTheme } from "@heroui/use-theme";
 
 function App() {
   const { theme } = useTheme();
-  
+
   return (
-    <div className={`min-h-screen bg-background ${theme === "dark" ? "dark" : ""}`}>
+    <div
+      className={`min-h-screen bg-background ${theme === "dark" ? "dark" : ""}`}
+    >
       <Navbar />
       <HeroSection />
       <FeaturesSection />
