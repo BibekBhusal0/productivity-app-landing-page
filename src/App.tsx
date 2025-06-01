@@ -12,6 +12,7 @@ import { NewsletterSection } from "./components/newsletter-section";
 import { CtaSection } from "./components/cta-section";
 import { Footer } from "./components/footer";
 import { useTheme } from "@heroui/use-theme";
+import { FamilyButton } from "./components/ui/action-button";
 
 function App() {
   useTheme();
@@ -31,6 +32,10 @@ function App() {
       <NewsletterSection />
       <CtaSection />
       <Footer />
+
+      <div className='fixed z-30 bottom-5 right-8'><FamilyButton >
+        Hello Click me
+      </FamilyButton></div>
     </div>
   );
 }
