@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, cn } from "@heroui/react";
+import { Avatar, AvatarGroup, Button,  cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { ThemeAwareSparkles } from "./ui/sparkles";
@@ -112,16 +112,18 @@ export const HeroSection: React.FC = () => {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          <div className="flex -space-x-2">
+          <AvatarGroup 
+            isBordered
+            color= 'primary'
+            className="pb-1">
             {[1, 2, 3, 4].map((i) => (
-              <Image
+              <Avatar
                 key={i}
                 src={`https://img.heroui.chat/image/avatar?w=64&h=64&u=${i}`}
                 alt={`User ${i}`}
-                className="h-8 w-8 rounded-full border-2 border-white"
               />
             ))}
-          </div>
+          </AvatarGroup>
           <p className="text-sm text-foreground-600">
             <span className="font-semibold">10,000+</span> productivity pros trust Focusly
           </p>
