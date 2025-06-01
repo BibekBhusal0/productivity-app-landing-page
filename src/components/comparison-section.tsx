@@ -53,12 +53,12 @@ export const ComparisonSection: React.FC = () => {
         >
           <Table
             aria-label="Comparison table between Focusly and competitors"
-            removeWrapper
-            className="overflow-hidden rounded-lg border border-divider"
+            isStriped
+            // className="overflow-hidden rounded-lg border border-divider"
           >
             <TableHeader>
-              <TableColumn className="bg-content2">Feature</TableColumn>
-              <TableColumn className="bg-content2 text-center">
+              <TableColumn >Feature</TableColumn>
+              <TableColumn >
                 <div className="flex flex-col items-center">
                   <div className="flex items-center gap-2 text-primary">
                     <Icon icon="lucide:focus" />
@@ -85,8 +85,8 @@ export const ComparisonSection: React.FC = () => {
             </TableHeader>
             <TableBody>
               {features.map((feature, index) => (
-                <TableRow key={index} className={index % 2 === 0 ? "bg-content1" : "bg-content2"}>
-                  <TableCell className="font-medium">{feature.name}</TableCell>
+                <TableRow key={index} >
+                  <TableCell >{feature.name}</TableCell>
                   <TableCell className="text-center">
                     {feature.focusly ? (
                       <Icon icon="lucide:check" className="mx-auto text-success" />
