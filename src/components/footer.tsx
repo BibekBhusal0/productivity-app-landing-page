@@ -44,10 +44,10 @@ export const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
-    { name: "Twitter", icon: "logos:twitter", href: "#" },
-    { name: "LinkedIn", icon: "logos:linkedin-icon", href: "#" },
-    { name: "Instagram", icon: "logos:instagram-icon", href: "#" },
-    { name: "GitHub", icon: "logos:github-icon", href: "#" },
+    { name: "Twitter", icon: "lucide:twitter", href: "#" },
+    { name: "Instagram", icon: "lucide:instagram", href: "#" },
+    { name: "GitHub", icon: "lucide:github", href: "#" },
+    { name: "GitHub", icon: "lucide:linked-in", href: "#" },
   ];
 
   const container = {
