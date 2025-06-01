@@ -4,16 +4,6 @@ import { AnimatePresence, motion, } from "framer-motion";
 
 export const PricingSection: React.FC = () => {
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <section id="pricing" className="section-padding">
       <div className="container-custom">
@@ -33,10 +23,10 @@ export const PricingSection: React.FC = () => {
         </motion.div>
 
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className = 'flex-center w-full'><Pricing 
             className ="lg:w-[768px] xl:w-[1024px]"
