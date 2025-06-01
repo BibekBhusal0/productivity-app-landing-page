@@ -1,34 +1,50 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import { SwapyItem, SwapyLayout, SwapySlot } from "./ui/swapy";
+import { SlotItemMapArray, utils } from "swapy";
 
+const features = [
+  {
+    id: '1',
+    icon: "lucide:check-square",
+    title: "Task Management",
+    description:
+      "Organize tasks with smart categories, priorities, and deadlines. Never miss an important deadline again.",
+  },
+  {
+    id: '2',
+    icon: "lucide:timer",
+    title: "Focus Timer",
+    description:
+      "Boost productivity with customizable Pomodoro timers and focus sessions tailored to your work style.",
+  },
+  {
+    id: '3',
+    icon: "lucide:calendar",
+    title: "Daily Planner",
+    description:
+      "Plan your day with an intuitive calendar that adapts to your productivity patterns and energy levels.",
+  },
+  {
+    id: '4',
+    icon: "lucide:bell",
+    title: "Smart Reminders",
+    description:
+      "Get intelligent notifications that know when to alert you based on priority and your focus state.",
+  },
+];
 export const FeaturesSection: React.FC = () => {
-  const features = [
-    {
-      icon: "lucide:check-square",
-      title: "Task Management",
-      description:
-        "Organize tasks with smart categories, priorities, and deadlines. Never miss an important deadline again.",
-    },
-    {
-      icon: "lucide:timer",
-      title: "Focus Timer",
-      description:
-        "Boost productivity with customizable Pomodoro timers and focus sessions tailored to your work style.",
-    },
-    {
-      icon: "lucide:calendar",
-      title: "Daily Planner",
-      description:
-        "Plan your day with an intuitive calendar that adapts to your productivity patterns and energy levels.",
-    },
-    {
-      icon: "lucide:bell",
-      title: "Smart Reminders",
-      description:
-        "Get intelligent notifications that know when to alert you based on priority and your focus state.",
-    },
-  ];
+
+  const [slotItemMap ] = React.useState<SlotItemMapArray>(
+    utils.initSlotItemMap(features, "id")
+  );
+
+  const slottedItems = React.useMemo(
+    () => utils.toSlottedItems(features, "id", slotItemMap),
+    [features, slotItemMap]
+  );
+
 
   const container = {
     hidden: { opacity: 0 },
@@ -60,7 +76,7 @@ export const FeaturesSection: React.FC = () => {
   };
 
   return (
-    <section id="features" className="section-padding bg-content1">
+    <section id="features" className="section-padding bg-content1 overflow-hidden">
       <div className="container-custom">
         <motion.div
           className="mb-16 text-center"
@@ -77,26 +93,47 @@ export const FeaturesSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+        <SwapyLayout
+          id="swapy"
+          config={{ swapMode: "hover" }}
         >
-          {features.map((feature, index) => (
-            <motion.div key={index} variants={item}
-              className="h-full cursor-pointer border border-divider transition-shadow shadow-sm hover:shadow-lg flex flex-col gap-4 p-6 rounded-lg"
-              whileHover = 'hover'
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-600 p-3 text-white">
-                <Icon icon={feature.icon} className="text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold">{feature.title}</h3>
-              <p className="text-foreground-600">{feature.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.div
+            className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {slottedItems.map(({ itemId }) => {
+              const feature = features.find((i) => i.id === itemId);
+              if (!feature) return null
+              return (
+                <SwapySlot
+                  key={itemId}
+                  id={itemId}
+                  className='rounded-md '
+                >
+                  <SwapyItem
+                    id={itemId}
+                    className="rounded-md cursor-grab active:cursor-grabbing "
+                  >
+                    <motion.div key={itemId} variants={item}
+                      className="h-full focus-within:cursor-grabbing border border-divider transition-shadow shadow-sm hover:shadow-lg bg-default-100 flex flex-col gap-4 p-6 rounded-lg"
+                      whileHover='hover'
+                    >
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-600 p-3 text-white">
+                        <Icon icon={feature.icon} className="text-2xl" />
+                      </div>
+                      <h3 className="text-xl font-semibold">{feature.title}</h3>
+                      <p className="text-foreground-600">{feature.description}</p>
+                    </motion.div>
+                  </SwapyItem>
+                </SwapySlot>
+              )
+            })
+            }
+          </motion.div>
+        </SwapyLayout>
       </div>
     </section>
   );
