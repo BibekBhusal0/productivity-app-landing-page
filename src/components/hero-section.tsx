@@ -22,13 +22,13 @@ export const HeroSection: React.FC = () => {
           )}
         />
 
-        <ThemeAwareSparkles
+        {/* <ThemeAwareSparkles
           density={500}
           direction="up"
           minSize={1.4}
           size={4}
           className="absolute inset-x-0 top-0 -z-30 h-3/4 w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
-        />
+        /> */}
       </div>
 
       <motion.div
