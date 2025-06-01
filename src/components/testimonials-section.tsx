@@ -125,7 +125,7 @@ export const TestimonialsSection: React.FC = () => {
 
         <div className="relative">
           <motion.div
-            className="grid grid-cols-1 gap-6 md:grid-cols-3"
+            className="grid grid-cols-1 gap-6 md:grid-cols-3 md:h-60"
             variants={container}
             initial="hidden"
             whileInView="show"
