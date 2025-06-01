@@ -6,11 +6,6 @@ import { motion } from "framer-motion";
 export const HeroSection: React.FC = () => {
   return (
     <section id="hero" className="relative flex min-h-[90vh] items-center overflow-hidden">
-      {/* Video Background */}
-      <video autoPlay loop muted playsInline className="video-background">
-        <source src="https://cdn.heroui.chat/videos/productivity-bg.mp4" type="video/mp4" />
-      </video>
-      <div className="video-overlay"></div>
 
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
