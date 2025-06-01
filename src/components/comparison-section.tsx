@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@heroui/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
@@ -37,16 +30,16 @@ export const ComparisonSection: React.FC = () => {
     <section id="comparison" className="section-padding">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Why Choose <span className="gradient-text">Focusly</span>
           </h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-foreground-600">
             See how Focusly compares to other productivity tools
           </p>
         </motion.div>
@@ -56,12 +49,12 @@ export const ComparisonSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-4xl"
         >
           <Table
             aria-label="Comparison table between Focusly and competitors"
             removeWrapper
-            className="border border-divider rounded-lg overflow-hidden"
+            className="overflow-hidden rounded-lg border border-divider"
           >
             <TableHeader>
               <TableColumn className="bg-content2">Feature</TableColumn>
@@ -92,39 +85,27 @@ export const ComparisonSection: React.FC = () => {
             </TableHeader>
             <TableBody>
               {features.map((feature, index) => (
-                <TableRow
-                  key={index}
-                  className={index % 2 === 0 ? "bg-content1" : "bg-content2"}
-                >
+                <TableRow key={index} className={index % 2 === 0 ? "bg-content1" : "bg-content2"}>
                   <TableCell className="font-medium">{feature.name}</TableCell>
                   <TableCell className="text-center">
                     {feature.focusly ? (
-                      <Icon
-                        icon="lucide:check"
-                        className="text-success mx-auto"
-                      />
+                      <Icon icon="lucide:check" className="mx-auto text-success" />
                     ) : (
-                      <Icon icon="lucide:x" className="text-danger mx-auto" />
+                      <Icon icon="lucide:x" className="mx-auto text-danger" />
                     )}
                   </TableCell>
                   <TableCell className="text-center">
                     {feature.notion ? (
-                      <Icon
-                        icon="lucide:check"
-                        className="text-success mx-auto"
-                      />
+                      <Icon icon="lucide:check" className="mx-auto text-success" />
                     ) : (
-                      <Icon icon="lucide:x" className="text-danger mx-auto" />
+                      <Icon icon="lucide:x" className="mx-auto text-danger" />
                     )}
                   </TableCell>
                   <TableCell className="text-center">
                     {feature.todoist ? (
-                      <Icon
-                        icon="lucide:check"
-                        className="text-success mx-auto"
-                      />
+                      <Icon icon="lucide:check" className="mx-auto text-success" />
                     ) : (
-                      <Icon icon="lucide:x" className="text-danger mx-auto" />
+                      <Icon icon="lucide:x" className="mx-auto text-danger" />
                     )}
                   </TableCell>
                 </TableRow>

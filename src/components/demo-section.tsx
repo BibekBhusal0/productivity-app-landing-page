@@ -46,18 +46,17 @@ export const DemoSection: React.FC = () => {
     <section id="demo" className="section-padding bg-content2">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             See <span className="gradient-text">Focusly</span> in Action
           </h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto">
-            Explore the key features that make Focusly the ultimate productivity
-            tool
+          <p className="mx-auto max-w-2xl text-foreground-600">
+            Explore the key features that make Focusly the ultimate productivity tool
           </p>
         </motion.div>
 
@@ -74,8 +73,7 @@ export const DemoSection: React.FC = () => {
             color="primary"
             variant="underlined"
             classNames={{
-              tabList:
-                "gap-6 w-full relative rounded-none p-0 border-b border-divider",
+              tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
               cursor: "w-full bg-primary",
               tab: "max-w-fit px-0 h-12",
               tabContent: "group-data-[selected=true]:text-primary",
@@ -132,14 +130,14 @@ interface DemoTabContentProps {
 
 const DemoTabContent: React.FC<DemoTabContentProps> = ({ content }) => {
   return (
-    <Card className="mt-8 border-none shadow-none bg-transparent">
+    <Card className="mt-8 border-none bg-transparent shadow-none">
       <CardBody className="p-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-6">
             <h3 className="text-2xl font-semibold">{content.title}</h3>
             <p className="text-foreground-600">{content.description}</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {content.features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <Icon icon={feature.icon} className="text-primary" />
@@ -153,13 +151,9 @@ const DemoTabContent: React.FC<DemoTabContentProps> = ({ content }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="rounded-xl overflow-hidden shadow-lg border border-divider"
+            className="overflow-hidden rounded-xl border border-divider shadow-lg"
           >
-            <Image
-              src={content.image}
-              alt={content.title}
-              className="w-full h-auto"
-            />
+            <Image src={content.image} alt={content.title} className="h-auto w-full" />
           </motion.div>
         </div>
       </CardBody>

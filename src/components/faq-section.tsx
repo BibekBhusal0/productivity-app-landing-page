@@ -40,16 +40,16 @@ export const FaqSection: React.FC = () => {
     <section id="faq" className="section-padding">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Frequently Asked <span className="gradient-text">Questions</span>
           </h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-foreground-600">
             Find answers to common questions about Focusly
           </p>
         </motion.div>
@@ -59,7 +59,7 @@ export const FaqSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mx-auto"
+          className="mx-auto max-w-3xl"
         >
           <Accordion variant="bordered" selectionMode="multiple">
             {faqs.map((faq, index) => (

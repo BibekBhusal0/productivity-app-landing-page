@@ -73,28 +73,28 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-background border-t border-divider pt-16 pb-8">
+    <footer className="border-t border-divider bg-background pb-8 pt-16">
       <div className="container-custom">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-5 gap-8"
+          className="grid grid-cols-1 gap-8 md:grid-cols-5"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
           <motion.div variants={item} className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <Icon icon="lucide:focus" className="text-primary text-2xl" />
-              <span className="font-bold text-xl">Focusly</span>
+            <div className="mb-4 flex items-center gap-2">
+              <Icon icon="lucide:focus" className="text-2xl text-primary" />
+              <span className="text-xl font-bold">Focusly</span>
             </div>
-            <p className="text-foreground-600 mb-6 max-w-xs">
-              The all-in-one productivity app that helps you focus, organize
-              tasks, and achieve more in less time.
+            <p className="mb-6 max-w-xs text-foreground-600">
+              The all-in-one productivity app that helps you focus, organize tasks, and achieve more
+              in less time.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <Link key={index} href={social.href} aria-label={social.name}>
-                  <div className="w-10 h-10 flex items-center justify-center rounded-full bg-content2 hover:bg-content3 transition-colors">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-content2 transition-colors hover:bg-content3">
                     <Icon icon={social.icon} className="text-xl" />
                   </div>
                 </Link>
@@ -104,13 +104,13 @@ export const Footer: React.FC = () => {
 
           {footerLinks.map((column, columnIndex) => (
             <motion.div key={columnIndex} variants={item}>
-              <h3 className="font-semibold mb-4">{column.title}</h3>
+              <h3 className="mb-4 font-semibold">{column.title}</h3>
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <Link
                       href={link.href}
-                      className="text-foreground-600 hover:text-foreground transition-colors text-sm"
+                      className="text-sm text-foreground-600 transition-colors hover:text-foreground"
                     >
                       {link.name}
                     </Link>
@@ -126,28 +126,19 @@ export const Footer: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="mt-16 pt-6 border-t border-divider flex flex-col md:flex-row justify-between items-center"
+          className="mt-16 flex flex-col items-center justify-between border-t border-divider pt-6 md:flex-row"
         >
-          <p className="text-sm text-foreground-500 mb-4 md:mb-0">
+          <p className="mb-4 text-sm text-foreground-500 md:mb-0">
             © {new Date().getFullYear()} Focusly. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link
-              href="#"
-              className="text-sm text-foreground-500 hover:text-foreground"
-            >
+            <Link href="#" className="text-sm text-foreground-500 hover:text-foreground">
               Terms
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-foreground-500 hover:text-foreground"
-            >
+            <Link href="#" className="text-sm text-foreground-500 hover:text-foreground">
               Privacy
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-foreground-500 hover:text-foreground"
-            >
+            <Link href="#" className="text-sm text-foreground-500 hover:text-foreground">
               Cookies
             </Link>
           </div>

@@ -12,7 +12,7 @@ export const CtaSection: React.FC = () => {
       <div className="container-custom relative overflow-hidden">
         {/* Animated background elements */}
         <motion.div
-          className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full"
+          className="absolute right-0 top-0 h-64 w-64 rounded-full bg-white/5"
           animate={{
             x: [0, 10, 0],
             y: [0, -10, 0],
@@ -26,7 +26,7 @@ export const CtaSection: React.FC = () => {
         />
 
         <motion.div
-          className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full"
+          className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-white/5"
           animate={{
             x: [0, -10, 0],
             y: [0, 10, 0],
@@ -44,22 +44,22 @@ export const CtaSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mx-auto text-center relative z-10"
+          className="relative z-10 mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Ready to take control of your time?
           </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Join thousands of professionals who have transformed their
-            productivity with Focusly. Start your 14-day free trial today.
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
+            Join thousands of professionals who have transformed their productivity with Focusly.
+            Start your 14-day free trial today.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button
               size="lg"
               color="default"
               variant="solid"
-              className="font-medium text-primary bg-white"
+              className="bg-white font-medium text-primary"
               startContent={<Icon icon="lucide:zap" />}
             >
               Start Free Trial
@@ -68,16 +68,14 @@ export const CtaSection: React.FC = () => {
             <Button
               size="lg"
               variant="flat"
-              className="font-medium text-white border-white/30"
+              className="border-white/30 font-medium text-white"
               startContent={<Icon icon="lucide:calendar" />}
             >
               Schedule a Demo
             </Button>
           </div>
 
-          <p className="text-white/60 text-sm mt-6">
-            No credit card required. Cancel anytime.
-          </p>
+          <p className="mt-6 text-sm text-white/60">No credit card required. Cancel anytime.</p>
         </motion.div>
       </div>
     </section>

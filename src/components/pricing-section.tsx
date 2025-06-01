@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
-  Button,
-  Switch,
-} from "@heroui/react";
+import { Card, CardBody, CardHeader, CardFooter, Button, Switch } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
@@ -90,32 +83,26 @@ export const PricingSection: React.FC = () => {
     <section id="pricing" className="section-padding">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Simple, Transparent <span className="gradient-text">Pricing</span>
           </h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto">
-            Choose the plan that fits your needs. All plans include a 14-day
-            free trial.
+          <p className="mx-auto max-w-2xl text-foreground-600">
+            Choose the plan that fits your needs. All plans include a 14-day free trial.
           </p>
 
-          <div className="flex items-center justify-center mt-8 gap-3">
+          <div className="mt-8 flex items-center justify-center gap-3">
             <span
               className={`text-sm ${!isYearly ? "font-semibold text-foreground" : "text-foreground-500"}`}
             >
               Monthly
             </span>
-            <Switch
-              isSelected={isYearly}
-              onValueChange={setIsYearly}
-              color="primary"
-              size="sm"
-            />
+            <Switch isSelected={isYearly} onValueChange={setIsYearly} color="primary" size="sm" />
             <span
               className={`text-sm ${isYearly ? "font-semibold text-foreground" : "text-foreground-500"}`}
             >
@@ -125,7 +112,7 @@ export const PricingSection: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 gap-8 md:grid-cols-3"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -138,7 +125,7 @@ export const PricingSection: React.FC = () => {
                 isHoverable
               >
                 {plan.popular && (
-                  <div className="absolute top-0 right-0 bg-primary text-white text-xs font-medium px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                  <div className="absolute right-0 top-0 rounded-bl-lg rounded-tr-lg bg-primary px-3 py-1 text-xs font-medium text-white">
                     Most Popular
                   </div>
                 )}
@@ -149,28 +136,21 @@ export const PricingSection: React.FC = () => {
                     <span className="text-3xl font-bold">
                       ${isYearly ? plan.price.yearly : plan.price.monthly}
                     </span>
-                    <span className="text-foreground-500 text-sm mb-1">
-                      /month
-                    </span>
+                    <span className="mb-1 text-sm text-foreground-500">/month</span>
                   </div>
                   {isYearly && plan.price.yearly > 0 && (
                     <p className="text-xs text-success">
                       Billed annually (${(plan.price.yearly * 12).toFixed(2)})
                     </p>
                   )}
-                  <p className="text-sm text-foreground-600 mt-2">
-                    {plan.description}
-                  </p>
+                  <p className="mt-2 text-sm text-foreground-600">{plan.description}</p>
                 </CardHeader>
 
                 <CardBody className="py-6">
                   <ul className="space-y-3">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <Icon
-                          icon="lucide:check"
-                          className="text-success mt-0.5"
-                        />
+                        <Icon icon="lucide:check" className="mt-0.5 text-success" />
                         <span className="text-sm">{feature}</span>
                       </li>
                     ))}

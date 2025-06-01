@@ -88,9 +88,7 @@ export const TestimonialsSection: React.FC = () => {
 
   const handleNext = () => {
     setActiveIndex((prev) =>
-      prev + maxVisibleTestimonials >= testimonials.length
-        ? 0
-        : prev + maxVisibleTestimonials,
+      prev + maxVisibleTestimonials >= testimonials.length ? 0 : prev + maxVisibleTestimonials
     );
   };
 
@@ -98,37 +96,36 @@ export const TestimonialsSection: React.FC = () => {
     setActiveIndex((prev) =>
       prev - maxVisibleTestimonials < 0
         ? Math.max(0, testimonials.length - maxVisibleTestimonials)
-        : prev - maxVisibleTestimonials,
+        : prev - maxVisibleTestimonials
     );
   };
 
   const visibleTestimonials = testimonials.slice(
     activeIndex,
-    Math.min(activeIndex + maxVisibleTestimonials, testimonials.length),
+    Math.min(activeIndex + maxVisibleTestimonials, testimonials.length)
   );
 
   return (
     <section id="testimonials" className="section-padding bg-content2">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             What Our <span className="gradient-text">Users</span> Say
           </h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto">
-            Join thousands of satisfied users who have transformed their
-            productivity with Focusly
+          <p className="mx-auto max-w-2xl text-foreground-600">
+            Join thousands of satisfied users who have transformed their productivity with Focusly
           </p>
         </motion.div>
 
         <div className="relative">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 gap-6 md:grid-cols-3"
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -155,23 +152,19 @@ export const TestimonialsSection: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="flex gap-0.5 my-1">
+                    <div className="my-1 flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
                         <Icon
                           key={i}
                           icon="lucide:star"
                           className={
-                            i < testimonial.rating
-                              ? "text-warning"
-                              : "text-foreground-300"
+                            i < testimonial.rating ? "text-warning" : "text-foreground-300"
                           }
                         />
                       ))}
                     </div>
 
-                    <p className="text-foreground-600 italic">
-                      "{testimonial.quote}"
-                    </p>
+                    <p className="italic text-foreground-600">"{testimonial.quote}"</p>
                   </CardBody>
                 </Card>
               </motion.div>
@@ -179,12 +172,12 @@ export const TestimonialsSection: React.FC = () => {
           </motion.div>
 
           {testimonials.length > maxVisibleTestimonials && (
-            <div className="flex justify-center mt-8 gap-4">
+            <div className="mt-8 flex justify-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handlePrev}
-                className="p-2 rounded-full bg-content1 border border-divider"
+                className="rounded-full border border-divider bg-content1 p-2"
                 aria-label="Previous testimonials"
               >
                 <Icon icon="lucide:chevron-left" className="text-foreground" />
@@ -194,7 +187,7 @@ export const TestimonialsSection: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleNext}
-                className="p-2 rounded-full bg-content1 border border-divider"
+                className="rounded-full border border-divider bg-content1 p-2"
                 aria-label="Next testimonials"
               >
                 <Icon icon="lucide:chevron-right" className="text-foreground" />

@@ -40,38 +40,31 @@ export const IntegrationsSection: React.FC = () => {
     <section id="integrations" className="section-padding bg-content1">
       <div className="container-custom">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Seamless <span className="gradient-text">Integrations</span>
           </h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-foreground-600">
             Connect Focusly with your favorite tools and services
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12"
+          className="grid grid-cols-2 gap-8 sm:grid-cols-4 md:gap-12"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
           {integrations.map((integration, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className="flex flex-col items-center gap-3"
-            >
-              <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900 dark:to-primary-800 rounded-xl shadow-sm border border-divider integration-logo">
-                <Icon
-                  icon={integration.icon}
-                  className="text-4xl md:text-5xl"
-                />
+            <motion.div key={index} variants={item} className="flex flex-col items-center gap-3">
+              <div className="integration-logo flex h-16 w-16 items-center justify-center rounded-xl border border-divider bg-gradient-to-br from-primary-100 to-primary-200 shadow-sm dark:from-primary-900 dark:to-primary-800 md:h-20 md:w-20">
+                <Icon icon={integration.icon} className="text-4xl md:text-5xl" />
               </div>
               <p className="text-sm font-medium">{integration.name}</p>
             </motion.div>

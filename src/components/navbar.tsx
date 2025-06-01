@@ -30,7 +30,7 @@ export const Navbar: React.FC = () => {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
-      className="bg-background/70 backdrop-blur-md border-b border-divider"
+      className="border-b border-divider bg-background/70 backdrop-blur-md"
       shouldHideOnScroll
     >
       <NavbarContent>
@@ -45,13 +45,13 @@ export const Navbar: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <Icon icon="lucide:focus" className="text-primary text-2xl" />
-            <p className="font-bold text-xl">Focusly</p>
+            <Icon icon="lucide:focus" className="text-2xl text-primary" />
+            <p className="text-xl font-bold">Focusly</p>
           </motion.div>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item.name}-${index}`}>
             <motion.div
@@ -59,11 +59,7 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
             >
-              <Link
-                color="foreground"
-                href={item.href}
-                className="text-sm font-medium"
-              >
+              <Link color="foreground" href={item.href} className="text-sm font-medium">
                 {item.name}
               </Link>
             </motion.div>

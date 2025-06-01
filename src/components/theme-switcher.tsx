@@ -13,21 +13,18 @@ export const ThemeSwitcher: React.FC = () => {
   };
 
   return (
-    <Tooltip
-      content={`Switch to ${isDark ? "light" : "dark"} mode`}
-      placement="bottom"
-    >
+    <Tooltip content={`Switch to ${isDark ? "light" : "dark"} mode`} placement="bottom">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
-        className="flex items-center gap-2 cursor-pointer"
+        className="flex cursor-pointer items-center gap-2"
         onClick={handleToggle}
       >
         <div className="relative">
-          <div className="flex items-center bg-content2 dark:bg-content3 rounded-full p-1 w-16">
+          <div className="flex w-16 items-center rounded-full bg-content2 p-1 dark:bg-content3">
             <motion.div
-              className="absolute bg-white dark:bg-primary-800 w-6 h-6 rounded-full shadow-sm z-10 flex items-center justify-center"
+              className="absolute z-10 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm dark:bg-primary-800"
               animate={{ x: isDark ? 24 : 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
@@ -36,7 +33,7 @@ export const ThemeSwitcher: React.FC = () => {
                 className={`text-sm ${isDark ? "text-primary-300" : "text-warning"}`}
               />
             </motion.div>
-            <div className="flex justify-between w-full px-1.5">
+            <div className="flex w-full justify-between px-1.5">
               <span className="w-4" />
               <span className="w-4" />
             </div>

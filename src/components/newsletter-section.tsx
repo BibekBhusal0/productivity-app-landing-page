@@ -46,20 +46,17 @@ export const NewsletterSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-2xl mx-auto text-center"
+          className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Stay <span className="gradient-text">Updated</span>
           </h2>
-          <p className="text-foreground-600 mb-8">
-            Join 10,000+ productivity enthusiasts and get tips, tricks, and
-            early access to new features
+          <p className="mb-8 text-foreground-600">
+            Join 10,000+ productivity enthusiasts and get tips, tricks, and early access to new
+            features
           </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-3"
-          >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
             <Input
               type="email"
               placeholder="Enter your email"
@@ -69,9 +66,7 @@ export const NewsletterSection: React.FC = () => {
               radius="md"
               isInvalid={!!error}
               errorMessage={error}
-              startContent={
-                <Icon icon="lucide:mail" className="text-foreground-400" />
-              }
+              startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
               className="flex-grow"
             />
             <Button
@@ -89,13 +84,13 @@ export const NewsletterSection: React.FC = () => {
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-success mt-4"
+              className="mt-4 text-success"
             >
               Thank you for subscribing! Check your inbox soon.
             </motion.p>
           )}
 
-          <p className="text-xs text-foreground-400 mt-4">
+          <p className="mt-4 text-xs text-foreground-400">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </motion.div>
