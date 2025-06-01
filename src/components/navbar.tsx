@@ -9,10 +9,12 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  useDisclosure,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import ThemeSwitch from "./theme-switcher";
+import { AuthModal } from "./auth-modal";
 
 const motionProps = {
   initial: { opacity: 0, y: -10 },
@@ -22,6 +24,19 @@ const motionProps = {
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [authMode, setAuthMode] = React.useState<"login" | "signup">("login");
+
+  const handleLoginClick = () => {
+    setAuthMode("login");
+    onOpen();
+  };
+
+  const handleSignupClick = () => {
+    setAuthMode("signup");
+    onOpen();
+  };
+
 
   const menuItems = [
     { name: "Features", href: "#features" },
@@ -32,7 +47,7 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <HeroNavbar
+    <><HeroNavbar
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
@@ -76,12 +91,12 @@ export const Navbar: React.FC = () => {
             <ThemeSwitch />
           </NavbarItem>
           <NavbarItem className="">
-            <Button color="primary" className="text-sm font-medium" variant="flat">
+            <Button color="primary" onPress={handleLoginClick} className="text-sm font-medium" variant="flat">
               Log in
             </Button>
           </NavbarItem>
           <NavbarItem>
-            <Button color="primary" startContent={<Icon icon="lucide:log-in" />}>
+            <Button onPress={handleSignupClick} color="primary" startContent={<Icon icon="lucide:log-in" />}>
               Sign Up
             </Button>
           </NavbarItem>
@@ -107,6 +122,6 @@ export const Navbar: React.FC = () => {
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>
-    </HeroNavbar>
+    </HeroNavbar><AuthModal {...{isOpen, onOpenChange, initialMode: authMode}} /></>
   );
 };
