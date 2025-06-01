@@ -1,33 +1,34 @@
 import React from "react";
-import { Image } from "@heroui/react";
+import { Accordion, AccordionItem, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
 export const HowItWorksSection: React.FC = () => {
+  const [selectedKey, setSelectedKey] = React.useState('0');
   const steps = [
     {
-      number: "01",
+      index: "0",
       title: "Create an account",
       description:
         "Sign up in seconds and customize your productivity dashboard to match your workflow.",
       icon: "lucide:user-plus",
-      image: "https://img.heroui.chat/image/ai?w=400&h=300&u=1",
+      image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=project1",
     },
     {
-      number: "02",
+      index: "1",
       title: "Add your tasks and goals",
       description:
         "Organize your work with smart task management and set achievable goals with deadlines.",
       icon: "lucide:list-todo",
-      image: "https://img.heroui.chat/image/ai?w=400&h=300&u=2",
+      image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=project4",
     },
     {
-      number: "03",
+      index: "2",
       title: "Track progress with smart insights",
       description:
         "Get detailed analytics on your productivity patterns and receive personalized recommendations.",
       icon: "lucide:line-chart",
-      image: "https://img.heroui.chat/image/ai?w=400&h=300&u=3",
+      image: "https://img.heroui.chat/image/dashboard?w=600&h=400&u=project3",
     },
   ];
 
@@ -49,52 +50,44 @@ export const HowItWorksSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 hidden h-full w-0.5 -translate-x-1/2 transform bg-primary-200 md:block"></div>
-
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className={`relative mb-24 grid grid-cols-1 items-center gap-8 last:mb-0 md:grid-cols-2 ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 z-10 flex hidden h-10 w-10 -translate-x-1/2 transform items-center justify-center rounded-full bg-primary text-white md:flex">
-                <Icon icon={step.icon} />
+        <div className='flex flex-col md:flex-row gap-4 '>
+          <Accordion selectionMode='single' variant="splitted"
+            itemClasses={{ base: 'bg-content1' ,title: 'text-lg', startContent: 'text-xl text-primary-800' }}
+            selectedKeys={[selectedKey]}
+            onSelectionChange={(e) => {
+              if (typeof e === "string") setSelectedKey(e)
+              else {
+                const val = e.values().next().value
+                if (val) setSelectedKey(val as string)
+              }
+            }}
+          >
+            {steps.map(({ title, description, icon, index },) => <AccordionItem startContent={<Icon icon={icon} />} key={index} aria-label={title} title={title}>
+              {description}
+              <div className="hidden md:block">
+                <div className="text-md py-3">Here are some more text to fill space</div>
+                Lorem Ipsum sed do ut lorem tempor tempor magna ipsum do sit magna labore incididunt dolore incididunt tempor magna do adipiscing magna adipiscing amet lorem ipsum ipsum ipsum eiusmod labore sit eiusmod lorem 
               </div>
-
-              <div className={`${index % 2 === 1 ? "md:pl-12" : "md:pr-12"} flex flex-col gap-4`}>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 p-3 text-primary md:hidden">
-                    <Icon icon={step.icon} className="text-2xl" />
-                  </div>
-                  <span className="text-4xl font-bold text-primary-300">{step.number}</span>
-                  <h3 className="text-2xl font-semibold">{step.title}</h3>
-                </div>
-                <p className="text-foreground-600">{step.description}</p>
+              <div className="hidden lg:block">
+                adipiscing sed amet ut labore labore sit et dolor sed sit ut sit eiusmod amet magna ut ut labore incididunt eiusmod tempor sed eiusmod do adipiscing eiusmod do elit 
               </div>
+            </AccordionItem>)}
+          </Accordion>
 
-              <div className={`${index % 2 === 1 ? "md:order-first" : ""}`}>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden rounded-xl border border-divider shadow-lg"
-                >
-                  <Image src={step.image} alt={step.title} className="h-auto w-full object-cover" />
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
+          <div className="relative h-96 w-full overflow-hidden rounded-lg md:h-[500px] md:px-0 px-2">
+            {steps.map((item, index) => (
+              <img
+                alt={item.title}
+                className={cn(
+                  "absolute h-[500px] w-full transform-gpu rounded-lg object-cover transition-all duration-300",
+                  selectedKey === item.index ? "scale-100 opacity-100" : "scale-0 opacity-0",
+                )}
+                key={item.index}
+                src={item.image}
+                style={{ zIndex: steps.length - index }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
