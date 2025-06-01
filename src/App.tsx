@@ -12,7 +12,7 @@ import { NewsletterSection } from "./components/newsletter-section";
 import { CtaSection } from "./components/cta-section";
 import { Footer } from "./components/footer";
 import { useTheme } from "@heroui/use-theme";
-import { FamilyButton } from "./components/ui/action-button";
+import { FamilyButton } from "./components/ui/family-button";
 
 function App() {
   useTheme();
