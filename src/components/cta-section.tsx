@@ -7,9 +7,9 @@ export const CtaSection: React.FC = () => {
   return (
     <section
       id="cta"
-      className="section-padding bg-gradient-to-br from-primary-900 to-primary-700 text-white"
+      className="section-padding bg-gradient-to-r from-primary-800 to-primary-600 text-white dark:from-primary-200 dark:to-primary-400"
     >
-      <div className="container-custom relative overflow-hidden">
+      <div className="container-custom relative">
         {/* Animated background elements */}
         <motion.div
           className="absolute right-0 top-0 h-64 w-64 rounded-full bg-white/5"
@@ -57,9 +57,8 @@ export const CtaSection: React.FC = () => {
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button
               size="lg"
-              color="default"
+              color="warning"
               variant="solid"
-              className="bg-white font-medium text-primary"
               startContent={<Icon icon="lucide:zap" />}
             >
               Start Free Trial
@@ -67,8 +66,8 @@ export const CtaSection: React.FC = () => {
 
             <Button
               size="lg"
-              variant="flat"
-              className="border-white/30 font-medium text-white"
+              variant="light"
+              color = 'warning'
               startContent={<Icon icon="lucide:calendar" />}
             >
               Schedule a Demo
