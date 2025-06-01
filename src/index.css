@@ -32,18 +32,6 @@
   }
 }
 
-.integration-logo {
-  transition: all 0.3s ease;
-  filter: grayscale(100%);
-  opacity: 0.7;
-}
-
-.integration-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
-}
-
 .dark .gradient-text {
   @apply bg-gradient-to-r from-blue-400 to-purple-400;
 }

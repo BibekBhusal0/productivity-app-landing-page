@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import { cn } from "@heroui/react";
 
 export const IntegrationsSection: React.FC = () => {
   const integrations = [
@@ -16,24 +17,12 @@ export const IntegrationsSection: React.FC = () => {
 
   const container = {
     hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
@@ -62,8 +51,11 @@ export const IntegrationsSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {integrations.map((integration, index) => (
-            <motion.div key={index} variants={item} className="flex flex-col items-center gap-3">
-              <div className="integration-logo flex h-16 w-16 items-center justify-center rounded-xl border border-divider bg-gradient-to-br from-primary-100 to-primary-200 shadow-sm dark:from-primary-900 dark:to-primary-800 md:h-20 md:w-20">
+            <motion.div key={index} variants={item} className="flex flex-col items-center gap-3 group">
+              <div className={cn("flex-center size-16 rounded-xl border border-divider md:h-20 md:w-20",
+                "bg-gradient-to-br from-primary-100 to-primary-200 shadow-sm dark:from-primary-900 dark:to-primary-800", 
+                "group-hover:grayscale-0 grayscale transition-all group-hover:scale-110"
+              )}>
                 <Icon icon={integration.icon} className="text-4xl md:text-5xl" />
               </div>
               <p className="text-sm font-medium">{integration.name}</p>
