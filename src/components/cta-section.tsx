@@ -10,35 +10,6 @@ export const CtaSection: React.FC = () => {
       className="section-padding bg-gradient-to-r from-primary-800 to-primary-600 text-white dark:from-primary-200 dark:to-primary-400"
     >
       <div className="container-custom relative">
-        {/* Animated background elements */}
-        <motion.div
-          className="absolute right-0 top-0 h-64 w-64 rounded-full bg-white/5"
-          animate={{
-            x: [0, 10, 0],
-            y: [0, -10, 0],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 8,
-            ease: "easeInOut",
-          }}
-        />
-
-        <motion.div
-          className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-white/5"
-          animate={{
-            x: [0, -10, 0],
-            y: [0, 10, 0],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 7,
-            ease: "easeInOut",
-          }}
-        />
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
