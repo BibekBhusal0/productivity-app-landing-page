@@ -39,7 +39,11 @@ export const HeroSection: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.div className="text-xl mt-6 size-20 rounded-full bg-primary-700">
+        <motion.div 
+          initial = {{scale : 0 , opacity : 0}}
+          animate = {{scale : 1 , opacity: 1}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-xl mt-6 size-20 rounded-full bg-primary-700 origin-center">
           <Icon icon="lucide:focus" className="text-primary" />
         </motion.div>
         <motion.h1
