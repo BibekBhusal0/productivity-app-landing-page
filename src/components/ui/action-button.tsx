@@ -2,7 +2,7 @@ import { FC, ReactNode, useState } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@heroui/react"
 import {Icon} from "@iconify/react"
-
+import {button} from "@heroui/theme"
 
 const CONTAINER_SIZE = 200
 
@@ -17,15 +17,15 @@ const FamilyButton: React.FC<FamilyButtonProps> = ({ children }) => {
   return (
     <div
       className={cn(
-        "rounded-[24px] border border-black/10  shadow-sm dark:border-yellow-400/20",
-        "bg-gradient-to-b  from-neutral-900 to-black",
+        "rounded-[24px] border border-default-300  shadow-sm",
+        "bg-gradient-to-b from-default-100 to-background",
         isExpanded
-          ? "w-[204px] dark:from-stone-900 dark:to-neutral-900/80"
-          : "dark:from-neutral-900 dark:to-stone-950 "
+          ? "w-[204px]"
+          : ""
       )}
     >
-      <div className="rounded-[23px] border   border-black/10 ">
-        <div className="rounded-[22px] border  dark:border-stone-800 border-white/50 ">
+      <div className="rounded-[23px] border   border-black/10">
+        <div className="rounded-[22px] border  border-default-100">
           <div className="rounded-[21px] border    border-neutral-950/20   flex items-center justify-center ">
             <FamilyButtonContainer
               isExpanded={isExpanded}
@@ -69,9 +69,9 @@ const FamilyButtonContainer: FC<FamilyButtonContainerProps> = ({
   return (
     <motion.div
       className={cn(
-        "relative   border-white/10 border shadow-lg flex flex-col space-y-1  items-center  text-white  cursor-pointer z-10",
+        "relative   border-white/10 border shadow-lg flex flex-col space-y-1  items-center  text-foreground  cursor-pointer z-10",
         !isExpanded
-          ? "bg-gradient-to-b from-neutral-900 to-stone-900 dark:from-stone-700 dark:to-neutral-800/80"
+          ? "bg-gradient-to-b from-default-100 to-default-50"
           : ""
       )}
       layoutRoot
@@ -79,23 +79,8 @@ const FamilyButtonContainer: FC<FamilyButtonContainerProps> = ({
       initial={{ borderRadius: 21, width: "4rem", height: "4rem" }}
       animate={
         isExpanded
-          ? {
-              borderRadius: 20,
-              width: CONTAINER_SIZE,
-              height: CONTAINER_SIZE + 50,
-
-              transition: {
-                type: "spring",
-                damping: 25,
-                stiffness: 400,
-                when: "beforeChildren",
-              },
-            }
-          : {
-              borderRadius: 21,
-              width: "4rem",
-              height: "4rem",
-            }
+          ? { borderRadius: 20, width: CONTAINER_SIZE, height: CONTAINER_SIZE + 50, transition: { type: "spring", damping: 25, stiffness: 400, when: "beforeChildren" } }
+          : { borderRadius: 21, width: "4rem", height: "4rem" }
       }
     >
       {children}
@@ -105,41 +90,27 @@ const FamilyButtonContainer: FC<FamilyButtonContainerProps> = ({
         initial={{ x: "-50%" }}
         animate={{
           x: isExpanded ? "0%" : "-50%",
-          transition: {
-            type: "tween",
-            ease: "easeOut",
-            duration: 0.3,
-          },
+          transition: { type: "tween", ease: "easeOut", duration: 0.3 },
         }}
-        style={{
-          left: isExpanded ? "" : "50%",
-          bottom: 6,
-        }}
+        style={{ left: isExpanded ? "" : "50%", bottom: 6 }}
       >
         {isExpanded ? (
           <motion.div
-            className="p-[10px] group bg-neutral-800/50 dark:bg-black/50 border border-cyan-100/30 hover:border-neutral-200 text-orange-50 rounded-full shadow-2xl transition-colors duration-300 "
+            className = {cn('group', button({variant: 'flat', color : 'danger' , isIconOnly: true, size : 'lg'}))}
             onClick={toggleExpand}
             layoutId="expand-toggle"
             initial={false}
-            animate={{
-              rotate: -360,
-              transition: {
-                duration: 0.4,
-              },
-            }}
+            animate={{ rotate: -360, transition: { duration: 0.4 } }}
           >
             <Icon 
               icon = 'lucide:x'
-              className={cn(
-                "h-7 w-7 text-cyan-100/30 dark:text-neutral-400/80 group-hover:text-neutral-500 transition-colors duration-200 "
-              )}
+              className='size-7'
             />
           </motion.div>
         ) : (
           <motion.div
             className={cn(
-              "p-[10px] group bg-neutral-200 dark:bg-cyan-500/90 text-cyan-50 border border-cyan-100/10  shadow-2xl transition-colors duration-200"
+                'group', button({variant: "shadow", color: 'primary', isIconOnly: true, size: 'lg'})
             )}
             style={{ borderRadius: 24 }}
             onClick={toggleExpand}
@@ -152,7 +123,7 @@ const FamilyButtonContainer: FC<FamilyButtonContainerProps> = ({
               },
             }}
           >
-            <Icon icon = 'lucide:plus' className="h-7 w-7 text-black dark:text-neutral-900" />
+            <Icon icon = 'lucide:plus' className="size-7" />
           </motion.div>
         )}
       </motion.div>
