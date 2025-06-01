@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className="md:hidden"
         />
         <NavbarBrand>
           <motion.div
@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+      <NavbarContent className="hidden gap-4 md:flex" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item.name}-${index}`}>
             <motion.div
@@ -66,12 +66,17 @@ export const Navbar: React.FC = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-
       <NavbarContent justify="end">
-        <NavbarItem className="hidden sm:flex">
-          <ThemeSwitch />
+        <NavbarItem className="">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <ThemeSwitch />
+          </motion.div>
         </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
+        <NavbarItem className="">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -120,9 +125,7 @@ export const Navbar: React.FC = () => {
             Log in
           </Link>
         </NavbarMenuItem>
-        <NavbarMenuItem className="flex justify-center py-2">
-          <ThemeSwitch />
-        </NavbarMenuItem>
+
       </NavbarMenu>
     </HeroNavbar>
   );
