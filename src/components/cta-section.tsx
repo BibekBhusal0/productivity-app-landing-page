@@ -67,7 +67,7 @@ export const CtaSection: React.FC = () => {
             <Button
               size="lg"
               variant="light"
-              color = 'warning'
+              color="warning"
               startContent={<Icon icon="lucide:calendar" />}
             >
               Schedule a Demo

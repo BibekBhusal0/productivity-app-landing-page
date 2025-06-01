@@ -57,8 +57,8 @@ export const ComparisonSection: React.FC = () => {
             // className="overflow-hidden rounded-lg border border-divider"
           >
             <TableHeader>
-              <TableColumn >Feature</TableColumn>
-              <TableColumn >
+              <TableColumn>Feature</TableColumn>
+              <TableColumn>
                 <div className="flex flex-col items-center">
                   <div className="flex items-center gap-2 text-primary">
                     <Icon icon="lucide:focus" />
@@ -85,8 +85,8 @@ export const ComparisonSection: React.FC = () => {
             </TableHeader>
             <TableBody>
               {features.map((feature, index) => (
-                <TableRow key={index} >
-                  <TableCell >{feature.name}</TableCell>
+                <TableRow key={index}>
+                  <TableCell>{feature.name}</TableCell>
                   <TableCell className="text-center">
                     {feature.focusly ? (
                       <Icon icon="lucide:check" className="mx-auto text-success" />

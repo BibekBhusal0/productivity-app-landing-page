@@ -6,28 +6,28 @@ import { SlotItemMapArray, utils } from "swapy";
 
 const features = [
   {
-    id: '1',
+    id: "1",
     icon: "lucide:check-square",
     title: "Task Management",
     description:
       "Organize tasks with smart categories, priorities, and deadlines. Never miss an important deadline again.",
   },
   {
-    id: '2',
+    id: "2",
     icon: "lucide:timer",
     title: "Focus Timer",
     description:
       "Boost productivity with customizable Pomodoro timers and focus sessions tailored to your work style.",
   },
   {
-    id: '3',
+    id: "3",
     icon: "lucide:calendar",
     title: "Daily Planner",
     description:
       "Plan your day with an intuitive calendar that adapts to your productivity patterns and energy levels.",
   },
   {
-    id: '4',
+    id: "4",
     icon: "lucide:bell",
     title: "Smart Reminders",
     description:
@@ -35,16 +35,12 @@ const features = [
   },
 ];
 export const FeaturesSection: React.FC = () => {
-
-  const [slotItemMap] = React.useState<SlotItemMapArray>(
-    utils.initSlotItemMap(features, "id")
-  );
+  const [slotItemMap] = React.useState<SlotItemMapArray>(utils.initSlotItemMap(features, "id"));
 
   const slottedItems = React.useMemo(
     () => utils.toSlottedItems(features, "id", slotItemMap),
     [features, slotItemMap]
   );
-
 
   const container = {
     hidden: { opacity: 0 },
@@ -70,13 +66,13 @@ export const FeaturesSection: React.FC = () => {
       y: -6,
       scale: 1.03,
       transition: {
-        duration: 0.2
-      }
-    }
+        duration: 0.2,
+      },
+    },
   };
 
   return (
-    <section id="features" className="section-padding bg-content1 overflow-hidden">
+    <section id="features" className="section-padding overflow-hidden bg-content1">
       <div className="container-custom">
         <motion.div
           className="mb-16 text-center"
@@ -93,10 +89,7 @@ export const FeaturesSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <SwapyLayout
-          id="swapy"
-          config={{ swapMode: "hover" }}
-        >
+        <SwapyLayout id="swapy" config={{ swapMode: "hover" }}>
           <motion.div
             className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
             variants={container}
@@ -106,22 +99,17 @@ export const FeaturesSection: React.FC = () => {
           >
             {slottedItems.map(({ itemId }) => {
               const feature = features.find((i) => i.id === itemId);
-              if (!feature) return null
+              if (!feature) return null;
               return (
-                <SwapySlot
-                  key={itemId}
-                  id={itemId}
-                  className='rounded-md '
-                >
-                  <SwapyItem
-                    id={itemId}
-                    className="rounded-md cursor-grab active:cursor-grabbing "
-                  >
-                    <motion.div key={itemId} variants={item}
-                      className="h-full focus-within:cursor-grabbing border border-divider transition-shadow shadow-sm hover:shadow-lg bg-default-100 flex flex-col gap-4 p-6 rounded-lg"
-                      whileHover='hover'
+                <SwapySlot key={itemId} id={itemId} className="rounded-md">
+                  <SwapyItem id={itemId} className="cursor-grab rounded-md active:cursor-grabbing">
+                    <motion.div
+                      key={itemId}
+                      variants={item}
+                      className="flex h-full flex-col gap-4 rounded-lg border border-divider bg-default-100 p-6 shadow-sm transition-shadow focus-within:cursor-grabbing hover:shadow-lg"
+                      whileHover="hover"
                     >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient p-3 text-white">
+                      <div className="bg-gradient flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white">
                         <Icon icon={feature.icon} className="text-2xl" />
                       </div>
                       <h3 className="text-xl font-semibold">{feature.title}</h3>
@@ -129,9 +117,8 @@ export const FeaturesSection: React.FC = () => {
                     </motion.div>
                   </SwapyItem>
                 </SwapySlot>
-              )
-            })
-            }
+              );
+            })}
           </motion.div>
         </SwapyLayout>
       </div>

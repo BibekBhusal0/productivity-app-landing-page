@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
 export const PricingSection: React.FC = () => {
-    const [selectedTab, setSelectedTab] = React.useState("monthly");
+  const [selectedTab, setSelectedTab] = React.useState("monthly");
   const isYearly = selectedTab === "yearly";
 
   const plans = [
@@ -106,11 +106,9 @@ export const PricingSection: React.FC = () => {
                 title={
                   <>
                     Yearly
-
                     <Chip color="success" variant="flat" className="ml-2 text-xs">
                       Save 20%
                     </Chip>
-
                   </>
                 }
               />
@@ -128,11 +126,14 @@ export const PricingSection: React.FC = () => {
           {plans.map((plan, index) => (
             <motion.div key={index} variants={item} className="pricing-card">
               <Card
-                className={`h-full border pt-5 overflow-visible ${plan.popular ? "border-primary shadow-lg" : "border-divider shadow-sm"}`}
+                className={`h-full overflow-visible border pt-5 ${plan.popular ? "border-primary shadow-lg" : "border-divider shadow-sm"}`}
                 isHoverable
               >
                 {plan.popular && (
-                  <Chip className="absolute left-1/2 -translate-x-1/2 -translate-y-8" color = 'primary'>
+                  <Chip
+                    className="absolute left-1/2 -translate-x-1/2 -translate-y-8"
+                    color="primary"
+                  >
                     Most Popular
                   </Chip>
                 )}

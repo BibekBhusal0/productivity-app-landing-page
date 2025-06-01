@@ -94,8 +94,17 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
-                <Button key={index} as = {Link} href={social.href} isIconOnly color= 'primary' radius = 'full' variant = 'light' aria-label={social.name}>
-                    <Icon icon={social.icon} className="text-xl" />
+                <Button
+                  key={index}
+                  as={Link}
+                  href={social.href}
+                  isIconOnly
+                  color="primary"
+                  radius="full"
+                  variant="light"
+                  aria-label={social.name}
+                >
+                  <Icon icon={social.icon} className="text-xl" />
                 </Button>
               ))}
             </div>

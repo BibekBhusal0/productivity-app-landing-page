@@ -1,4 +1,4 @@
-import { useId, } from "react";
+import { useId } from "react";
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
@@ -20,8 +20,6 @@ interface SparklesProps {
   background?: string;
 }
 
-
-
 export function Sparkles({
   className,
   size = 1.2,
@@ -30,13 +28,13 @@ export function Sparkles({
   speed = 1.5,
   minSpeed = null,
   opacity = 1,
-  direction = '',
+  direction = "",
   opacitySpeed = 3,
   minOpacity = null,
-  color = '#ffffff',
+  color = "#ffffff",
   mousemove = false,
   hover = false,
-  background = 'transparent',
+  background = "transparent",
 }: SparklesProps) {
   const [isReady, setIsReady] = useState(false);
 
@@ -65,11 +63,11 @@ export function Sparkles({
       events: {
         onClick: {
           enable: true,
-          mode: 'push',
+          mode: "push",
         },
         onHover: {
           enable: hover,
-          mode: 'grab',
+          mode: "grab",
           parallax: {
             enable: mousemove,
             force: 60,
@@ -115,7 +113,7 @@ export function Sparkles({
         },
         enable: false,
         maxSpeed: 50,
-        mode: 'bounce',
+        mode: "bounce",
         overlap: {
           enable: true,
           retries: 0,
@@ -146,29 +144,40 @@ export function Sparkles({
   };
   return (
     isReady && (
-      <Particles id={id}
+      <Particles
+        id={id}
         // @ts-ignore
-        options={defaultOptions} className={className} />
+        options={defaultOptions}
+        className={className}
+      />
     )
   );
 }
 
-type themeAwareParticleProps = Omit<SparklesProps, 'color'> & {
-  color?: string | ((theme: string) => string)
-}
+type themeAwareParticleProps = Omit<SparklesProps, "color"> & {
+  color?: string | ((theme: string) => string);
+};
 
-export const ThemeAwareSparkles = ({ color: particleColor = (theme) => theme === 'dark' ? '#ffffff' : '#000000', ...props }: themeAwareParticleProps) => {
-  const [theme, setTheme] = useState(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+export const ThemeAwareSparkles = ({
+  color: particleColor = (theme) => (theme === "dark" ? "#ffffff" : "#000000"),
+  ...props
+}: themeAwareParticleProps) => {
+  const [theme, setTheme] = useState(
+    document.documentElement.classList.contains("dark") ? "dark" : "light"
+  );
 
-  const color = typeof particleColor === 'string' || particleColor === undefined ? particleColor : particleColor && particleColor(theme);
+  const color =
+    typeof particleColor === "string" || particleColor === undefined
+      ? particleColor
+      : particleColor && particleColor(theme);
   useEffect(() => {
     const handleThemeChange = () => {
-      setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
     };
     const observer = new MutationObserver(handleThemeChange);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
 
-  return <Sparkles {...props} color={color} />
-}
+  return <Sparkles {...props} color={color} />;
+};

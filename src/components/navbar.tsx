@@ -55,7 +55,10 @@ export const Navbar: React.FC = () => {
       <NavbarContent className="hidden gap-4 md:flex" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item.name}-${index}`}>
-            <motion.div {...motionProps} transition={{ ...motionProps.transition, delay: 0.1 + index * 0.1 }}>
+            <motion.div
+              {...motionProps}
+              transition={{ ...motionProps.transition, delay: 0.1 + index * 0.1 }}
+            >
               <Link color="foreground" href={item.href} className="text-sm font-medium">
                 {item.name}
               </Link>
@@ -64,20 +67,21 @@ export const Navbar: React.FC = () => {
         ))}
       </NavbarContent>
       <NavbarContent justify="end">
-        <motion.div {...motionProps} className = 'flex gap-4 items-center' transition={{ ...motionProps.transition, delay: 0.2 }}>
+        <motion.div
+          {...motionProps}
+          className="flex items-center gap-4"
+          transition={{ ...motionProps.transition, delay: 0.2 }}
+        >
           <NavbarItem className="">
             <ThemeSwitch />
           </NavbarItem>
           <NavbarItem className="">
-            <Button color="primary" className="text-sm font-medium" variant = 'flat'>
+            <Button color="primary" className="text-sm font-medium" variant="flat">
               Log in
             </Button>
           </NavbarItem>
           <NavbarItem>
-            <Button
-              color="primary"
-              startContent={<Icon icon="lucide:log-in" />}
-            >
+            <Button color="primary" startContent={<Icon icon="lucide:log-in" />}>
               Sign Up
             </Button>
           </NavbarItem>
@@ -106,4 +110,3 @@ export const Navbar: React.FC = () => {
     </HeroNavbar>
   );
 };
-

@@ -2,49 +2,48 @@ import React from "react";
 import { Button, Image, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import { ThemeAwareSparkles } from './ui/sparkles';
+import { ThemeAwareSparkles } from "./ui/sparkles";
 
 export const HeroSection: React.FC = () => {
   return (
-    <section id="hero" className={cn(
-      "relative min-h-[90vh] flex  items-center overflow-hidden",
-    )}>
-
-      <div className={cn(
-        "absolute size-full",
-        "[mask-image:radial-gradient(50%_50%,white,transparent)]",
-        "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#369eff,transparent_90%)] before:opacity-100",
-        "after:absolute after:border-2 after:-left-1/2 after:top-1/3 after:aspect-[1/1.8] after:w-[200%] after:rounded-[50%] after:border-b after:border-default after:bg-default-50"
-      )}>
-
-        <div className={cn(
-          "absolute bottom-0 left-0 right-0 top-0 -z-20",
-          "bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px] "
-        )} />
+    <section id="hero" className={cn("relative flex min-h-[90vh] items-center overflow-hidden")}>
+      <div
+        className={cn(
+          "absolute size-full",
+          "[mask-image:radial-gradient(50%_50%,white,transparent)]",
+          "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#369eff,transparent_90%)] before:opacity-100",
+          "after:absolute after:-left-1/2 after:top-1/3 after:aspect-[1/1.8] after:w-[200%] after:rounded-[50%] after:border-2 after:border-b after:border-default after:bg-default-50"
+        )}
+      >
+        <div
+          className={cn(
+            "absolute bottom-0 left-0 right-0 top-0 -z-20",
+            "bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px]"
+          )}
+        />
 
         <ThemeAwareSparkles
           density={500}
-          direction = 'up'
+          direction="up"
           minSize={1.4}
           size={4}
-          className='absolute -z-30 inset-x-0 top-0 h-3/4 w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]'
+          className="absolute inset-x-0 top-0 -z-30 h-3/4 w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
         />
-
       </div>
 
-
       <motion.div
-        className="container-custom relative z-10 flex-center pt-28 text-center flex flex-col gap-6"
+        className="container-custom flex-center relative z-10 flex flex-col gap-6 pt-28 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <motion.div 
-          initial = {{scale : 0 , opacity : 0}}
-          animate = {{scale : 1 , opacity: 1}}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xl mt-6 size-20 rounded-full bg-primary-700 origin-center flex-center">
-          <Icon icon="lucide:focus"  width = {50} className="text-primary" />
+          className="flex-center mt-6 size-20 origin-center rounded-full bg-primary-700 text-xl"
+        >
+          <Icon icon="lucide:focus" width={50} className="text-primary" />
         </motion.div>
         <motion.h1
           className="gradient-text text-4xl font-bold md:text-5xl lg:text-6xl"
@@ -131,4 +130,3 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
-

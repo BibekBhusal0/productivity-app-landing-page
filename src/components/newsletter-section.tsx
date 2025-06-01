@@ -67,7 +67,7 @@ export const NewsletterSection: React.FC = () => {
               isInvalid={!!error}
               errorMessage={error}
               startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
-              variant = 'faded'
+              variant="faded"
               className="flex-grow"
             />
             <Button
