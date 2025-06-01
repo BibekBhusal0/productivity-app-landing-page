@@ -39,7 +39,7 @@ export const NewsletterSection: React.FC = () => {
   };
 
   return (
-    <section id="newsletter" className="section-padding bg-content2">
+    <section id="newsletter" className="section-padding bg-content1">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,6 +67,7 @@ export const NewsletterSection: React.FC = () => {
               isInvalid={!!error}
               errorMessage={error}
               startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
+              variant = 'faded'
               className="flex-grow"
             />
             <Button
