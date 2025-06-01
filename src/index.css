@@ -24,14 +24,6 @@
   }
 }
 
-.feature-card {
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
 .pricing-card {
   transition: all 0.3s ease;
 }

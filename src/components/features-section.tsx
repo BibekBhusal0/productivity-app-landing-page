@@ -1,5 +1,4 @@
 import React from "react";
-import { Card, CardBody } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
@@ -47,10 +46,17 @@ export const FeaturesSection: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: [0.16, 1, 0.3, 1],
       },
     },
+    hover: {
+      y: -6,
+      scale: 1.03,
+      transition: {
+        duration: 0.2
+      }
+    }
   };
 
   return (
@@ -79,16 +85,15 @@ export const FeaturesSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {features.map((feature, index) => (
-            <motion.div key={index} variants={item} className="feature-card">
-              <Card className="h-full border border-divider shadow-sm transition-shadow duration-300 hover:shadow-md">
-                <CardBody className="flex flex-col gap-4 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-600 p-3 text-white">
-                    <Icon icon={feature.icon} className="text-2xl" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
-                  <p className="text-foreground-600">{feature.description}</p>
-                </CardBody>
-              </Card>
+            <motion.div key={index} variants={item}
+              className="h-full cursor-pointer border border-divider transition-shadow shadow-sm hover:shadow-lg flex flex-col gap-4 p-6 rounded-lg"
+              whileHover = 'hover'
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-600 p-3 text-white">
+                <Icon icon={feature.icon} className="text-2xl" />
+              </div>
+              <h3 className="text-xl font-semibold">{feature.title}</h3>
+              <p className="text-foreground-600">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>

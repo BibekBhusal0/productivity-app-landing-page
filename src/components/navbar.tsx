@@ -64,22 +64,18 @@ export const Navbar: React.FC = () => {
         ))}
       </NavbarContent>
       <NavbarContent justify="end">
-        <motion.div {...motionProps} className = 'flex gap-3 items-center' transition={{ ...motionProps.transition, delay: 0.2 }}>
+        <motion.div {...motionProps} className = 'flex gap-4 items-center' transition={{ ...motionProps.transition, delay: 0.2 }}>
           <NavbarItem className="">
             <ThemeSwitch />
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="#" color="foreground" className="text-sm font-medium">
+            <Button color="primary" className="text-sm font-medium" variant = 'flat'>
               Log in
-            </Link>
+            </Button>
           </NavbarItem>
           <NavbarItem>
             <Button
-              as={Link}
               color="primary"
-              href="#"
-              variant="flat"
-              className="font-medium"
               startContent={<Icon icon="lucide:log-in" />}
             >
               Sign Up
