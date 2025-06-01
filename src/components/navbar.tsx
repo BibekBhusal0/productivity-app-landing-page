@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import { ThemeSwitcher } from "./theme-switcher";
+import ThemeSwitch from "./theme-switcher";
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
 
       <NavbarContent justify="end">
         <NavbarItem className="hidden sm:flex">
-          <ThemeSwitcher />
+          <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden sm:flex">
           <motion.div
@@ -121,7 +121,7 @@ export const Navbar: React.FC = () => {
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem className="flex justify-center py-2">
-          <ThemeSwitcher />
+          <ThemeSwitch />
         </NavbarMenuItem>
       </NavbarMenu>
     </HeroNavbar>

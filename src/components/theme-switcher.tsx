@@ -1,45 +1,36 @@
-import React from "react";
-import { Switch, Tooltip } from "@heroui/react";
-import { Icon } from "@iconify/react";
+import { useRef, useEffect } from "react";
 import { useTheme } from "@heroui/use-theme";
-import { motion } from "framer-motion";
+import { Button, ButtonProps, cn } from "@heroui/react";
+import { Icon } from "@iconify/react";
 
-export const ThemeSwitcher: React.FC = () => {
+function ThemeSwitch({ className, ...props }: ButtonProps) {
+  const firstRender = useRef(true);
   const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
 
-  const handleToggle = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
+  useEffect(() => {
+    setTimeout(() => (firstRender.current = false), 1);
+  }, []);
+
+  if (!theme) return null;
+  const startIcon = theme === "dark" ? "line-md:moon-loop" : "line-md:sunny-loop";
+  const transitionIcon =
+    theme === "light"
+      ? "line-md:moon-to-sunny-outline-loop-transition"
+      : "line-md:sunny-outline-to-moon-loop-transition";
+
+  const handleClick = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
-    <Tooltip content={`Switch to ${isDark ? "light" : "dark"} mode`} placement="bottom">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
-        className="flex cursor-pointer items-center gap-2"
-        onClick={handleToggle}
-      >
-        <div className="relative">
-          <div className="flex w-16 items-center rounded-full bg-content2 p-1 dark:bg-content3">
-            <motion.div
-              className="absolute z-10 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm dark:bg-primary-800"
-              animate={{ x: isDark ? 24 : 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            >
-              <Icon
-                icon={isDark ? "lucide:moon" : "lucide:sun"}
-                className={`text-sm ${isDark ? "text-primary-300" : "text-warning"}`}
-              />
-            </motion.div>
-            <div className="flex w-full justify-between px-1.5">
-              <span className="w-4" />
-              <span className="w-4" />
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </Tooltip>
+    <Button
+      isIconOnly
+      className={cn("text-xl", className)}
+      variant="light"
+      {...props}
+      onPress={handleClick}
+    >
+      <Icon key={theme} icon={firstRender.current ? startIcon : transitionIcon} />
+    </Button>
   );
-};
+}
+
+export default ThemeSwitch;
