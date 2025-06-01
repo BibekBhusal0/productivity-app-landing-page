@@ -1,62 +1,8 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardFooter, Button, Tabs, Chip, Tab, cn } from "@heroui/react";
-import { Icon } from "@iconify/react";
+import { Card,   Tabs, Chip, Tab, cn, CardHeader, CardFooter, Button } from "@heroui/react";
 import { AnimatePresence, motion, } from "framer-motion";
 
 export const PricingSection: React.FC = () => {
-  const [selectedTab, setSelectedTab] = React.useState("monthly");
-  const isYearly = selectedTab === "yearly";
-
-  const plans = [
-    {
-      name: "Free",
-      price: { monthly: 0, yearly: 0 },
-      description: "Perfect for getting started with basic productivity tools.",
-      features: [
-        "Basic task management",
-        "Standard focus timer",
-        "Calendar view",
-        "Mobile app access",
-        "5 projects",
-      ],
-      cta: "Get Started",
-      color: "default",
-      popular: false,
-    },
-    {
-      name: "Pro",
-      price: { monthly: 9.99, yearly: 7.99 },
-      description: "For professionals who need advanced productivity features.",
-      features: [
-        "Advanced task management",
-        "Custom focus timers",
-        "Time tracking & reports",
-        "Unlimited projects",
-        "Team collaboration (up to 3)",
-        "Priority support",
-      ],
-      cta: "Start Free Trial",
-      color: "primary",
-      popular: true,
-    },
-    {
-      name: "Team",
-      price: { monthly: 19.99, yearly: 16.99 },
-      description: "For teams that want to boost collective productivity.",
-      features: [
-        "Everything in Pro",
-        "Unlimited team members",
-        "Team analytics dashboard",
-        "Admin controls",
-        "Advanced permissions",
-        "API access",
-        "Dedicated support",
-      ],
-      cta: "Contact Sales",
-      color: "default",
-      popular: false,
-    },
-  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -64,18 +10,6 @@ export const PricingSection: React.FC = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
@@ -96,91 +30,17 @@ export const PricingSection: React.FC = () => {
           <p className="mx-auto max-w-2xl text-foreground-600">
             Choose the plan that fits your needs. All plans include a 14-day free trial.
           </p>
-
-          <div className="mb-8 flex items-center justify-center gap-3">
-            <Tabs selectedKey={selectedTab} onSelectionChange={(e) => setSelectedTab(e as string)}>
-              <Tab value="monthly" key="monthly" title="Monthly" />
-              <Tab
-                value="yearly"
-                key="yearly"
-                title={
-                  <>
-                    Yearly
-                    <Chip color="success" variant="flat" className="ml-2 text-xs">
-                      Save 20%
-                    </Chip>
-                  </>
-                }
-              />
-            </Tabs>
-          </div>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-3"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {plans.map((plan, index) => (
-            <motion.div key={index} variants={item} className="pricing-card">
-              <Card
-                className={`h-full overflow-visible border pt-5 ${plan.popular ? "border-primary shadow-lg" : "border-divider shadow-sm"}`}
-                isHoverable
-              >
-                {plan.popular && (
-                  <Chip
-                    className="absolute left-1/2 -translate-x-1/2 -translate-y-8"
-                    color="primary"
-                  >
-                    Most Popular
-                  </Chip>
-                )}
-
-                <CardHeader className="flex flex-col gap-2 pb-0">
-                  <h3 className="text-xl font-semibold">{plan.name}</h3>
-                  <div className="flex items-end gap-1">
-                    <span className="text-3xl font-bold">
-                      ${isYearly ? plan.price.yearly : plan.price.monthly}
-                    </span>
-                    <span className="mb-1 text-sm text-foreground-500">/month</span>
-                  </div>
-                  {isYearly && plan.price.yearly > 0 && (
-                    <p className="text-xs text-success">
-                      Billed annually (${(plan.price.yearly * 12).toFixed(2)})
-                    </p>
-                  )}
-                  <p className="mt-2 text-sm text-foreground-600">{plan.description}</p>
-                </CardHeader>
-
-                <CardBody className="py-6">
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Icon icon="lucide:check" className="mt-0.5 text-success" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardBody>
-
-                <CardFooter>
-                  <Button
-                    fullWidth
-                    color={plan.color as any}
-                    variant={plan.popular ? "solid" : "flat"}
-                    className={`font-medium ${plan.popular ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90" : ""}`}
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-
-          <Pricing outerRadius="rounded"
-            padding="large"
+          <div className = 'flex-center w-full'><Pricing outerRadius="rounded"
+            width = 'xl'
+            padding = 'large'
             plans={[
               {
                 monthlyPrice: '$0.00',
@@ -198,7 +58,7 @@ export const PricingSection: React.FC = () => {
                 name: 'Pro',
                 yearlyPrice: '$199.99'
               }
-            ]} />
+            ]} /></div>
         </motion.div>
       </div>
     </section>
@@ -247,6 +107,7 @@ const innerRadiusClasses = {
   moreRounded: "rounded-3xl",
 };
 
+
 export default function Pricing({
   plans,
   width = "lg",
@@ -260,56 +121,29 @@ export default function Pricing({
     setSelectedPlan(planName);
   };
 
-  const handleBillingChange = (cycle: "Monthly" | "Yearly") => {
-    setBilling(cycle);
-  };
-
   return (
-    <div
+    <Card
       className={cn(
-        "mx-auto bg-white shadow-lg",
+        "mx-auto",
         widthClasses[width],
         outerRadiusClasses[outerRadius],
         paddingClasses[padding],
       )}
     >
-      <div className="mb-3 flex justify-center bg-green-900">
-        <div className="relative w-3/4 rounded-full bg-zinc-300 p-1 pb-2">
-          <motion.div
-            className="absolute h-[38px] w-[calc(50%-6px)] rounded-full bg-green-900"
-            layoutId="cycleBackground"
-            initial={billing === "Monthly" ? { x: 2 } : { x: "calc(100% + 2px)" }}
-            animate={billing === "Monthly" ? { x: 2 } : { x: "calc(100% + 2px)" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-          <div className="relative z-10 flex">
-            {["Monthly", "Yearly"].map((cycle) => (
-              <motion.button
-                key={cycle}
-                className={cn(
-                  "z-20 w-1/2 rounded-full py-1 text-lg font-extrabold transition-colors duration-200",
-                  billing === cycle ? "text-zinc-800" : "text-zinc-500",
-                )}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleBillingChange(cycle as "Monthly" | "Yearly");
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {cycle}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-      </div>
+      
+      <CardHeader className = 'justify-center pb-8'><Tabs classNames ={{tabList : 'p-1.5', tabContent : "text-xl py-3 px-5"}} selectedKey={billing} onSelectionChange={(e) => setBilling(e as any)} size ='lg' radius = 'full'>
+        {["Monthly", "Yearly"].map((duration) => (
+          <Tab key={duration} title ={ duration } />
+        ))}
+      </Tabs></CardHeader>
 
       {plans.map((plan) => (
         <motion.div
           key={plan.name}
           className={cn(
-            "relative mb-3 cursor-pointer border-2 border-zinc-200 p-4",
+            "relative mb-3 cursor-pointer border-2 border-divider p-4",
             innerRadiusClasses[outerRadius],
-            selectedPlan === plan.name ? "bg-zinc-100" : "bg-white",
+            selectedPlan === plan.name ? "bg-content2" : "bg-default-50",
           )}
           onClick={() => handlePlanSelect(plan.name)}
           whileHover={{ scale: 1.02 }}
@@ -320,7 +154,7 @@ export default function Pricing({
             {selectedPlan === plan.name && (
               <motion.div
                 className={cn(
-                  "absolute inset-0 border-4 border-zinc-900",
+                  "absolute inset-0 border-4 border-primary",
                   innerRadiusClasses[outerRadius],
                 )}
                 layoutId="selectedPlanBorder"
@@ -335,13 +169,13 @@ export default function Pricing({
             <div>
               <span className="font-bold">{plan.name}</span>
               {plan.popular && (
-                <span className="ml-2 rounded bg-yellow-300 px-2 py-1 text-xs">Popular</span>
+                <Chip color = 'primary' className = 'ml-4' size= 'sm' >Popular</Chip>
               )}
             </div>
             <motion.div
               className={cn(
                 "flex h-6 w-6 items-center justify-center rounded-full border-2",
-                selectedPlan === plan.name ? "border-zinc-900 bg-zinc-900" : "border-zinc-300",
+                selectedPlan === plan.name ? "border-primary bg-primary" : "border-default-500",
               )}
               animate={{ scale: selectedPlan === plan.name ? 1 : 0.8 }}
             >
@@ -364,13 +198,10 @@ export default function Pricing({
         </motion.div>
       ))}
 
-      <motion.button
-        className={cn("w-full bg-black py-3 font-bold text-white", innerRadiusClasses[outerRadius])}
-        whileTap={{ scale: 0.95 }}
-      >
-        Get Started
-      </motion.button>
-    </div>
+      <CardFooter>
+        <Button variant = 'shadow' size = 'lg' color = 'primary' className = 'w-full'>Get Started</Button>
+      </CardFooter>
+    </Card>
   );
 }
 interface AnimatedPriceProps {
@@ -420,7 +251,7 @@ function AnimatedPrice({
   return (
     <div>
       <span className="text-2xl font-bold">{price}</span>
-      <span className="text-zinc-500">/{billingCycle.toLowerCase().slice(0, -2)}</span>
+      <span className="text-default-500">/{billingCycle.toLowerCase().slice(0, -2)}</span>
     </div>
   );
 }
