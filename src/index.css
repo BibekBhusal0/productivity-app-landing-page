@@ -22,6 +22,14 @@
   .container-custom {
     @apply container mx-auto px-4 md:px-8;
   }
+
+  .bg-gradient {
+    @apply bg-gradient-to-br from-primary-400 to-primary-600;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 }
 
 .pricing-card {

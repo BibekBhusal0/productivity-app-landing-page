@@ -36,7 +36,7 @@ const features = [
 ];
 export const FeaturesSection: React.FC = () => {
 
-  const [slotItemMap ] = React.useState<SlotItemMapArray>(
+  const [slotItemMap] = React.useState<SlotItemMapArray>(
     utils.initSlotItemMap(features, "id")
   );
 
@@ -121,7 +121,7 @@ export const FeaturesSection: React.FC = () => {
                       className="h-full focus-within:cursor-grabbing border border-divider transition-shadow shadow-sm hover:shadow-lg bg-default-100 flex flex-col gap-4 p-6 rounded-lg"
                       whileHover='hover'
                     >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-600 p-3 text-white">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient p-3 text-white">
                         <Icon icon={feature.icon} className="text-2xl" />
                       </div>
                       <h3 className="text-xl font-semibold">{feature.title}</h3>
