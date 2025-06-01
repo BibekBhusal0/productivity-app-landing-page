@@ -12,7 +12,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-500 from-30% to-danger-500 to-80% bg-clip-text text-transparent p-1
   }
 
   .section-padding {
@@ -32,6 +32,6 @@
   }
 }
 
-.dark .gradient-text {
-  @apply bg-gradient-to-r from-blue-400 to-purple-400;
-}
+/* .dark .gradient-text { */
+/*   @apply bg-gradient-to-r from-blue-400 to-purple-400; */
+/* } */
