@@ -43,11 +43,11 @@ export const FeaturesSection: React.FC = () => {
   );
 
   const container = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0 , y:20 },
     show: {
-      opacity: 1,
+      opacity: 1,y:0,
       transition: {
-        staggerChildren: 0.2,
+        duration: 0.5
       },
     },
   };
@@ -89,13 +89,13 @@ export const FeaturesSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <SwapyLayout id="swapy" config={{ swapMode: "hover" }}>
-          <motion.div
-            className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+        <motion.div
             variants={container}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            animate= 'show'
+        ><SwapyLayout id="swapy" config={{ swapMode: "hover" }}>
+          <div
+            className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
           >
             {slottedItems.map(({ itemId }) => {
               const feature = features.find((i) => i.id === itemId);
@@ -106,8 +106,9 @@ export const FeaturesSection: React.FC = () => {
                     <motion.div
                       key={itemId}
                       variants={item}
-                      className="flex h-full flex-col gap-4 rounded-lg border border-divider bg-default-100 p-6 shadow-sm transition-shadow focus-within:cursor-grabbing hover:shadow-lg"
+                      animate= 'show'
                       whileHover="hover"
+                      className="flex h-full flex-col gap-4 rounded-lg border border-divider bg-default-100 p-6 shadow-sm transition-shadow focus-within:cursor-grabbing hover:shadow-lg"
                     >
                       <div className="bg-gradient flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white">
                         <Icon icon={feature.icon} className="text-2xl" />
@@ -119,8 +120,8 @@ export const FeaturesSection: React.FC = () => {
                 </SwapySlot>
               );
             })}
-          </motion.div>
-        </SwapyLayout>
+          </div>
+        </SwapyLayout></motion.div>
       </div>
     </section>
   );
