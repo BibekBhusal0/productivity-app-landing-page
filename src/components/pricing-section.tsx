@@ -1,10 +1,11 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardFooter, Button, Switch } from "@heroui/react";
+import { Card, CardBody, CardHeader, CardFooter, Button, Tabs, Chip, Tab } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
 export const PricingSection: React.FC = () => {
-  const [isYearly, setIsYearly] = React.useState(false);
+    const [selectedTab, setSelectedTab] = React.useState("monthly");
+  const isYearly = selectedTab === "yearly";
 
   const plans = [
     {
@@ -96,18 +97,24 @@ export const PricingSection: React.FC = () => {
             Choose the plan that fits your needs. All plans include a 14-day free trial.
           </p>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <span
-              className={`text-sm ${!isYearly ? "font-semibold text-foreground" : "text-foreground-500"}`}
-            >
-              Monthly
-            </span>
-            <Switch isSelected={isYearly} onValueChange={setIsYearly} color="primary" size="sm" />
-            <span
-              className={`text-sm ${isYearly ? "font-semibold text-foreground" : "text-foreground-500"}`}
-            >
-              Yearly <span className="text-xs text-success">Save 20%</span>
-            </span>
+          <div className="mb-8 flex items-center justify-center gap-3">
+            <Tabs selectedKey={selectedTab} onSelectionChange={(e) => setSelectedTab(e as string)}>
+              <Tab value="monthly" key="monthly" title="Monthly" />
+              <Tab
+                value="yearly"
+                key="yearly"
+                title={
+                  <>
+                    Yearly
+
+                    <Chip color="success" variant="flat" className="ml-2 text-xs">
+                      Save 20%
+                    </Chip>
+
+                  </>
+                }
+              />
+            </Tabs>
           </div>
         </motion.div>
 
@@ -121,13 +128,13 @@ export const PricingSection: React.FC = () => {
           {plans.map((plan, index) => (
             <motion.div key={index} variants={item} className="pricing-card">
               <Card
-                className={`h-full border ${plan.popular ? "border-primary shadow-lg" : "border-divider shadow-sm"}`}
+                className={`h-full border pt-5 overflow-visible ${plan.popular ? "border-primary shadow-lg" : "border-divider shadow-sm"}`}
                 isHoverable
               >
                 {plan.popular && (
-                  <div className="absolute right-0 top-0 rounded-bl-lg rounded-tr-lg bg-primary px-3 py-1 text-xs font-medium text-white">
+                  <Chip className="absolute left-1/2 -translate-x-1/2 -translate-y-8" color = 'primary'>
                     Most Popular
-                  </div>
+                  </Chip>
                 )}
 
                 <CardHeader className="flex flex-col gap-2 pb-0">
