@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs, Tab, Card, CardBody, Image } from "@heroui/react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
+import CardSpread from "./spread-card";
 
 export const DemoSection: React.FC = () => {
   const [selected, setSelected] = React.useState("tasks");
@@ -114,6 +115,9 @@ export const DemoSection: React.FC = () => {
             </Tab>
           </Tabs>
         </motion.div>
+      </div>
+      <div className="flex-center">
+      <CardSpread />
       </div>
     </section>
   );
