@@ -1,7 +1,8 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import { cn } from "@heroui/react";
+import { Button, cn } from "@heroui/react";
+import { Example2, Example1 } from './ui/animated-beam'
 
 export const IntegrationsSection: React.FC = () => {
   const integrations = [
@@ -68,6 +69,28 @@ export const IntegrationsSection: React.FC = () => {
               <p className="text-sm font-medium">{integration.name}</p>
             </motion.div>
           ))}
+          <div className="size-full flex-center col-span-2 sm:col-span-4">
+            <Button color='primary' >More</Button>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="text-2xl text-center pt-12 pb-4">Example of instigation</div>
+        </motion.div>
+        <motion.div
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.div variants={item} ><Example1 /></motion.div>
+          <motion.div variants={item} ><Example2 /></motion.div>
         </motion.div>
       </div>
     </section>
