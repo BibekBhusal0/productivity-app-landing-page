@@ -1,7 +1,28 @@
-
 import { cn } from "@heroui/react";
 
 type noteWidgetProps = { notes: string[], title?: string; className?: string }
+
+export const Example1 = () => {
+  return (<NotesWidget
+    title='Some thing random'
+    notes={[
+      'aliquip laborum consectetur do eiusmod',
+      'eiusmod elit aliqua eiusmod aliqua elit dolore dolore sed ',
+    ]}
+  />
+  )
+}
+
+export const Example2 = () => {
+  return <NotesWidget title="Install Focusly"
+    notes={[
+      'Create an account',
+      "Add your tasks and goals",
+      "Track progress",
+      "Install Desktop App",
+    ]}
+  />
+}
 
 export const NotesWidget = ({ notes, title, className }: noteWidgetProps) => {
   return (

@@ -1,23 +1,17 @@
 import React from "react";
 import { SwapyItem, SwapyLayout, SwapySlot } from "../ui/swapy";
-import { TodoWidget } from "./todo";
-import { NotesWidget } from "./note";
 import { MusicWidget } from "./music";
 import { cn } from "@heroui/react";
+import { Example1 as TodoExample1, Example2 as TodoExample2 } from "./todo";
+import { Example1 as NoteExample1, Example2 as NoteExample2 } from "./note";
 
-const initialTasks = [
-  { id: "task1", title: "Buy groceries", done: false },
-  { id: "task2", title: "Walk the dog", done: true },
-];
-
-const initialNotes = ["Meeting at 2 PM", "Remember to call John"];
 
 const widgets = [
-  { id: "widget1", component: <TodoWidget initialTasks={initialTasks} title="Tasks" /> },
-  { id: "widget2", component: <NotesWidget notes={initialNotes} title="Notes" /> },
+  { id: "widget1", component: <TodoExample1 /> },
+  { id: "widget2", component: <NoteExample1 /> },
   { id: "widget3", component: <MusicWidget /> },
-  { id: "widget4", component: <TodoWidget initialTasks={[...initialTasks].reverse()} title="Tasks Reversed" /> },
-  { id: "widget5", component: <NotesWidget notes={[...initialNotes].reverse()} title="Notes Reversed" /> },
+  { id: "widget4", component: <TodoExample2 /> },
+  { id: "widget5", component: <NoteExample2 /> },
 ];
 
 const widgetLayout = [
@@ -43,7 +37,7 @@ export default function WidgetsPreview() {
               <SwapySlot
                 key={widget.id}
                 id={widget.id}
-                className={cn("rounded-md size-full" , layoutClass)}
+                className={cn("rounded-md size-full", layoutClass)}
               >
                 <SwapyItem id={widget.id} className="cursor-grab rounded-md active:cursor-grabbing size-full flex flex-col">
                   {widget.component}

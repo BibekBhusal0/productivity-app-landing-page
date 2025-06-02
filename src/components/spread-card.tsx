@@ -1,60 +1,13 @@
 import { useState } from "react";
 import { cn } from "@heroui/react";
-import { TodoWidget } from "./widgets/todo";
-import { NotesWidget } from "./widgets/note";
+import { Example1 as TodoExample1, Example2 as TodoExample2 } from "./widgets/todo";
+import { Example1 as NoteExample1, Example2 as NoteExample2 } from "./widgets/note";
 
 const cards = [
-  {
-    component: <NotesWidget
-      title='Some thing random'
-      notes={[
-        'aliquip laborum consectetur do eiusmod',
-        'eiusmod elit aliqua eiusmod aliqua elit dolore dolore sed ',
-      ]}
-    />,
-    rotationClass: "",
-    revealClass: "-rotate-[2deg]",
-  },
-  {
-    component: <TodoWidget title='Shopping List' initialTasks={[
-      { title: "Milk", done: true, },
-      { title: "Eggs", done: false, },
-      { title: "Bread", done: true, },
-      { title: "Cheese", done: false, },
-      { title: "Butter", done: false, },
-    ]} />,
-    rotationClass: "group-hover:rotate-[15deg]",
-    revealClass: "rotate-[3deg] translate-y-2",
-  },
-
-  {
-    component: <NotesWidget title="Install Focusly"
-      notes={[
-        'Create an account',
-        "Add your tasks and goals",
-        "Track progress",
-        "Install Desktop App",
-      ]}
-    />,
-    rotationClass: "group-hover:rotate-[30deg]",
-    revealClass: "-rotate-[2deg] translate-x-1",
-  },
-
-  {
-    component: <TodoWidget
-      title="Fetures"
-      initialTasks={[
-        { title: "Focus Timer", done: true, },
-        { title: "Task Management", done: true, },
-        { title: "Daily Planner", done: true, },
-        { title: "Smart Reminders", done: true, },
-        { title: "Pomodoro Timer", done: false, },
-        { title: "Intuitive Calendar", done: false, },
-      ]}
-    />,
-    rotationClass: "group-hover:rotate-[45deg]",
-    revealClass: "rotate-[2deg]",
-  },
+  { component: NoteExample1, rotationClass: "", revealClass: "-rotate-[2deg]" },
+  { component: TodoExample1, rotationClass: "group-hover:rotate-[15deg]", revealClass: "rotate-[3deg] translate-y-2" },
+  { component: NoteExample2, rotationClass: "group-hover:rotate-[30deg]", revealClass: "-rotate-[2deg] translate-x-1" },
+  { component: TodoExample2, rotationClass: "group-hover:rotate-[45deg]", revealClass: "rotate-[2deg]" },
 ];
 
 export default function CardSpread() {
@@ -91,7 +44,7 @@ export default function CardSpread() {
               isExpanded && item.revealClass,
             )}
           >
-            {item.component}
+            <item.component />
           </div>
         );
       })}
