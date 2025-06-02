@@ -1,7 +1,8 @@
 import React from "react";
-import { Card, CardBody, Avatar } from "@heroui/react";
+import { CardBody, Avatar } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import { Card } from "./customCard";
 
 export const TestimonialsSection: React.FC = () => {
   const testimonials = [
@@ -134,7 +135,7 @@ export const TestimonialsSection: React.FC = () => {
           >
             {visibleTestimonials.map((testimonial, index) => (
               <motion.div key={index} variants={item}>
-                <Card className="h-full border border-divider">
+                <Card hover className="h-full">
                   <CardBody className="flex flex-col gap-4">
                     <div className="flex items-center gap-3">
                       <Avatar

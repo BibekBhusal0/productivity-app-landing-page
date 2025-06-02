@@ -1,8 +1,9 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import { Button, cn } from "@heroui/react";
+import { Button, CardBody, cn } from "@heroui/react";
 import { Example2, Example1 } from './ui/animated-beam'
+import { Card } from "./customCard";
 
 export const IntegrationsSection: React.FC = () => {
   const integrations = [
@@ -83,14 +84,14 @@ export const IntegrationsSection: React.FC = () => {
           <div className="text-2xl text-center pt-12 pb-4">Example of instigation</div>
         </motion.div>
         <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12"
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 p-3"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={item} ><Example1 /></motion.div>
-          <motion.div variants={item} ><Example2 /></motion.div>
+          <motion.div variants={item} ><Card > <div className='text-xl py-3 text-center w-full'>Acts as hub for all apps</div><CardBody><Example1 /></CardBody> </Card></motion.div>
+          <motion.div variants={item} ><Card > <div className='text-xl py-3 text-center w-full'>Automate All Social Media</div><CardBody><Example2 /></CardBody> </Card></motion.div>
         </motion.div>
       </div>
     </section>

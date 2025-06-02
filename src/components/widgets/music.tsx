@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Image, Button } from "@heroui/react";
 import { Music, Music2, Music3, Pause, Play, SkipBack, SkipForward } from "lucide-react";
 import { cn } from "@heroui/react";
+import { allColors, Card } from "../customCard";
 
 const songs = [
   { title: "Take on me", artist: "A-ha" },
@@ -9,7 +10,7 @@ const songs = [
   { title: "It must have been love", artist: "Roxette" },
 ];
 
-export function MusicWidget() {
+export function MusicWidget({color = 'warning'}:{color?:allColors}) {
   const [currentSong, setCurrentSong] = useState(0);
   const [play, setPlay] = useState(false);
 
@@ -29,7 +30,7 @@ export function MusicWidget() {
   const { title, artist } = song;
 
   return (
-    <div className="rounded-xs grid size-full grid-cols-6 items-center justify-center gap-3 overflow-hidden rounded-medium border-small border-warning-200 bg-warning-50 p-2 text-warning-600 md:grid-cols-12 md:gap-4">
+    <Card color = {color} className="grid size-full grid-cols-6 items-center justify-center gap-3 overflow-hidden p-2 md:grid-cols-12 md:gap-4">
       <div className="relative col-span-6 md:col-span-6">
         <Image
           alt="Album cover"
@@ -91,6 +92,6 @@ export function MusicWidget() {
           </Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

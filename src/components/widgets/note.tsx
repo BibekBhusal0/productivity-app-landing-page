@@ -1,6 +1,7 @@
 import { cn } from "@heroui/react";
+import { allColors, Card } from "../customCard";
 
-type noteWidgetProps = { notes: string[]; title?: string; className?: string };
+type noteWidgetProps = { notes: string[]; title?: string; className?: string, color?: allColors };
 
 export const Example1 = () => {
   return (
@@ -28,11 +29,12 @@ export const Example2 = () => {
   );
 };
 
-export const NotesWidget = ({ notes, title, className }: noteWidgetProps) => {
+export const NotesWidget = ({ notes, title, className, color = 'primary' }: noteWidgetProps) => {
   return (
-    <div
+    <Card
+      color={color}
       className={cn(
-        "flex size-full flex-col items-start overflow-auto rounded-medium border-small border-primary-200 bg-primary-50 px-4 py-3 text-primary-600",
+        "flex size-full flex-col items-start overflow-auto px-4 py-3",
         className
       )}
     >
@@ -42,6 +44,6 @@ export const NotesWidget = ({ notes, title, className }: noteWidgetProps) => {
           {note}
         </div>
       ))}
-    </div>
+    </Card>
   );
 };

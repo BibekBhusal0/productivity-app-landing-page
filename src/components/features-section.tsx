@@ -2,37 +2,18 @@ import React from "react";
 import { ReactLenis } from "lenis/react";
 import { Button, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { allColors, Card } from "./customCard";
 
-type allColors = "primary" | "secondary" | "success" | "warning" | "danger" | "default";
 type featureType = { icon: string; title: string; description: string; color: allColors };
-
-type colorClasses = { icon?: string; main?: string };
-const colors: Record<allColors, colorClasses> = {
-  primary: {
-    main: "border-primary-200 bg-primary-50 text-primary-600",
-    icon: "bg-gradient-to-br from-primary-400 to-primary-600",
-  },
-  secondary: {
-    main: "border-secondary-200 bg-secondary-50 text-secondary-600",
-    icon: "bg-gradient-to-br from-secondary-400 to-secondary-600",
-  },
-  success: {
-    main: "border-success-200 bg-success-50 text-success-600",
-    icon: "bg-gradient-to-br from-success-400 to-success-600",
-  },
-  warning: {
-    main: "border-warning-200 bg-warning-50 text-warning-600",
-    icon: "bg-gradient-to-br from-warning-400 to-warning-600",
-  },
-  danger: {
-    main: "border-danger-200 bg-danger-50 text-danger-600",
-    icon: "bg-gradient-to-br from-danger-400 to-danger-600",
-  },
-  default: {
-    main: "border-default-200 bg-default-50 text-default-600",
-    icon: "bg-gradient-to-br from-default-400 to-default-600",
-  },
+const colors: Record<allColors, string> = {
+  primary: "from-primary-400 to-primary-600",
+  secondary: "from-secondary-400 to-secondary-600",
+  success: "from-success-400 to-success-600",
+  warning: "from-warning-400 to-warning-600",
+  danger: "from-danger-400 to-danger-600",
+  default: "from-default-400 to-default-600",
 };
+
 const features: featureType[] = [
   {
     icon: "lucide:check-square",
@@ -81,18 +62,19 @@ export const FeaturesSection: React.FC = () => {
               key={i}
               className="sticky top-0 h-[100vh] place-content-center pt-[40vh] md:h-screen md:pt-0"
             >
-              <div
+              <Card
+                hover
                 className={cn(
-                  "mx-auto grid h-72 w-[30rem] max-w-[80%] place-content-center gap-4 rounded-lg p-4",
-                  colors[color].main,
+                  "mx-auto grid h-72 w-[30rem] max-w-[80%] place-content-center gap-4 rounded-lg p-4 hover:scale-125 hover:rotate-0 transition-all",
                   i % 3 === 1 && "rotate-6",
                   i % 3 === 2 && "-rotate-6"
                 )}
+                color={color}
               >
                 <div
                   className={cn(
-                    "flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white",
-                    colors[color].icon
+                    "flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white bg-gradient-to-br ",
+                    colors[color]
                   )}
                 >
                   <Icon icon={icon} className="text-2xl" />
@@ -100,7 +82,7 @@ export const FeaturesSection: React.FC = () => {
                 <div className="text-2xl font-semibold">{title}</div>
                 <div>{description}</div>
                 <Button color={color}>Learn More</Button>
-              </div>
+              </Card>
             </div>
           ))}
         </div>

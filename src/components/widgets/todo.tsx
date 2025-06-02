@@ -1,13 +1,15 @@
 import { Checkbox, cn } from "@heroui/react";
+import { allColors, Card } from "../customCard";
 
-type tasksType = { title: string; done?: boolean };
-type taskWidgetProps = { initialTasks: tasksType[]; title?: string; className?: string };
+type tasksType = { title: string; done?: boolean, };
+type taskWidgetProps = { initialTasks: tasksType[]; title?: string; className?: string, color?: allColors  };
 
-export const TodoWidget = ({ initialTasks, title, className }: taskWidgetProps) => {
+export const TodoWidget = ({ initialTasks, title, className,color='secondary'  }: taskWidgetProps) => {
   return (
-    <div
+    <Card
+      color= { color }
       className={cn(
-        "flex size-full flex-col items-start overflow-auto rounded-medium border-small border-secondary-200 bg-secondary-50 px-4 py-3 text-secondary-600",
+        "flex size-full flex-col items-start overflow-auto px-4 py-3",
         className
       )}
     >
@@ -17,7 +19,7 @@ export const TodoWidget = ({ initialTasks, title, className }: taskWidgetProps) 
           {task.title}
         </Checkbox>
       ))}
-    </div>
+    </Card>
   );
 };
 
