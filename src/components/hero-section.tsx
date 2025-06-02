@@ -18,7 +18,7 @@ export const HeroSection: React.FC = () => {
         <div
           className={cn(
             "absolute bottom-0 left-0 right-0 top-0 -z-20",
-            "bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px]"
+            "dark:bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] dark:bg-[size:70px_80px] bg-[linear-gradient(to_right,#0000001a_1px,transparent_1px),linear-gradient(to_bottom,#dadada33_1px,transparent_1px)] bg-[size:70px_80px]"
           )}
         />
 
@@ -41,9 +41,9 @@ export const HeroSection: React.FC = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-center mt-6 size-20 origin-center rounded-full bg-primary-700 text-xl"
+          className="flex-center mt-6 size-20 origin-center rounded-full bg-primary text-white text-xl"
         >
-          <Icon icon="lucide:focus" width={50} className="text-primary" />
+          <Icon icon="lucide:focus" width={50} />
         </motion.div>
         <motion.h1
           className="gradient-text text-4xl font-bold md:text-5xl lg:text-6xl"

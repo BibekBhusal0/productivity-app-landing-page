@@ -12,7 +12,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-tr from-primary-500 from-10% via-success-400 via-40% to-danger-500 to-80%;
+    @apply bg-gradient-to-tr  from-10% to-80%  from-[#5EA2EF] to-[#0072F5];;
     @apply bg-clip-text p-1 text-transparent;
   }
 
@@ -22,10 +22,6 @@
 
   .container-custom {
     @apply container mx-auto overflow-hidden px-4 md:px-8;
-  }
-
-  .bg-gradient {
-    @apply bg-gradient-to-br from-primary-400 to-primary-600;
   }
 
   .flex-center {
