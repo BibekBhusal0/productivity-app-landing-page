@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import {  Image, Button,  } from "@heroui/react";
 import { Music, Music2, Music3, Pause, Play, SkipBack, SkipForward } from "lucide-react";
 import { cn } from "@heroui/react";
 
@@ -8,7 +8,6 @@ const songs = [
   { title: "It must have been love", artist: "Roxette" },
   { title: "Take on me", artist: "A-ha" },
 ];
-
 
 export function MusicWidget() {
   const [currentSong, setCurrentSong] = useState(0);
@@ -30,17 +29,27 @@ export function MusicWidget() {
   const { title, artist } = song;
 
   return (
-    <div className="flex size-full flex-col rounded-xs py-3 px-4 border-small rounded-medium items-start text-warning-600 bg-warning-50 border-warning-200 overflow-hidden">
-      <div className="relative flex flex-1 flex-col justify-between">
-        <div className="flex">
-          <div className="flex-1">
-            <img
-              src="https://heroui.com/images/album-cover.png"
-              alt="Album Pic"
-              className="h-20 w-20 rounded-2xl"
-            />
+
+    <div className="grid grid-cols-6 md:grid-cols-12 gap-3 md:gap-4 items-center justify-center rounded-xs p-2 border-small rounded-medium text-warning-600 bg-warning-50 border-warning-200 overflow-hidden size-full">
+      <div className="relative col-span-6 md:col-span-6">
+        <Image
+          alt="Album cover"
+          className="object-cover"
+          isBlurred
+          height={200}
+          shadow="md"
+          src="https://heroui.com/images/album-cover.png"
+          width="100%"
+        />
+      </div>
+      <div className="flex flex-col col-span-6 md:col-span-6 h-full justify-between ">
+        <div className="flex justify-between items-start">
+          <div className="flex flex-col">
+            <h3 className="font-semibold text-xl">{title}</h3>
+            <h1 className="font-medium text-foreground ">{artist}</h1>
           </div>
-          <div className={cn("flex h-fit w-12 flex-wrap justify-center gap-1")}>
+
+          <div className={"flex h-fit w-12 flex-wrap justify-center gap-1"}>
             <Music2
               size={16}
               className={cn("text-white transition-all", {
@@ -66,25 +75,32 @@ export function MusicWidget() {
               })}
             />
           </div>
+
         </div>
-        <p title={title} className="line-clamp-1 w-full text-lg font-bold leading-none">
-          {title}
-        </p>
-        <p title={artist} className="-mt-6 line-clamp-1 text-xs font-semibold leading-none text-indigo-300">
-          {artist}
-        </p>
-      </div>
-      <div className="mt-2 flex items-center justify-evenly">
-        <SkipBack size={20} className="cursor-pointer fill-white text-white hover:fill-gray-100 hover:text-gray-100 active:fill-gray-200 active:text-gray-200" onClick={handlePrev} />
-        <div onClick={handleClick}>
-          {!play ? (
-            <Play size={25} className="cursor-pointer fill-white text-white hover:fill-gray-100 hover:text-gray-100 active:fill-gray-200 active:text-gray-200" />
-          ) : (
-            <Pause size={25} className="cursor-pointer fill-white text-white hover:fill-gray-100 hover:text-gray-100 active:fill-gray-200 active:text-gray-200" />
-          )}
+        <div className="flex-center w-full">
+          <Button
+            isIconOnly
+            radius="full"
+            variant="light"
+            onPress={handlePrev}
+          >
+            <SkipBack size={20} className = 'fill-white' />
+          </Button>
+          <Button isIconOnly radius="full" variant="light" onPress={handleClick}>
+            {!play ? ( <Play className = 'fill-white' size={25}/> ) : ( <Pause className = 'fill-white' size={25}/> )}
+          </Button>
+          <Button
+            isIconOnly
+            radius="full"
+            variant="light"
+            onPress={handleNext}
+          >
+            <SkipForward size={25} className = 'fill-white' />
+          </Button>
+
         </div>
-        <SkipForward size={25} className="cursor-pointer fill-white text-white hover:fill-gray-100 hover:text-gray-100 active:fill-gray-200 active:text-gray-200" onClick={handleNext} />
       </div>
     </div>
+
   );
 }
