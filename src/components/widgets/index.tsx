@@ -1,8 +1,10 @@
 import React from "react";
-import { SwapyItem, SwapyLayout, SwapySlot } from "./ui/swapy";
+import { SwapyItem, SwapyLayout, SwapySlot } from "../ui/swapy";
 import { motion } from "framer-motion";
+import { TodoWidget } from "./todo";
+import { NotesWidget } from "./note";
+import { MusicWidget } from "./music";
 
-import { TodoWidget, NotesWidget, MusicWidget } from "./widgets";
 
 const initialTasks = [
   { id: "task1", title: "Buy groceries", done: false },

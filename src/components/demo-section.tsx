@@ -3,7 +3,7 @@ import { Tabs, Tab, Card, CardBody, Image } from "@heroui/react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import CardSpread from "./spread-card";
-import WidgetsPreview from "./widget-preview";
+import WidgetsPreview from "./widgets";
 
 export const DemoSection: React.FC = () => {
   const [selected, setSelected] = React.useState("tasks");

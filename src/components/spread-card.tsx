@@ -1,6 +1,7 @@
-import { TodoWidget, NotesWidget } from './widgets'
 import { useState } from "react";
 import { cn } from "@heroui/react";
+import { TodoWidget } from "./widgets/todo";
+import { NotesWidget } from "./widgets/note";
 
 const cards = [
   {
