@@ -12,7 +12,8 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-500 from-30% to-danger-500 to-80% bg-clip-text text-transparent p-1
+    @apply bg-gradient-to-tr from-primary-500 from-10% to-danger-500 to-80% via-success-400 via-40%; 
+    @apply bg-clip-text text-transparent p-1;
   }
 
   .section-padding {
@@ -31,7 +32,3 @@
     @apply flex items-center justify-center;
   }
 }
-
-/* .dark .gradient-text { */
-/*   @apply bg-gradient-to-r from-blue-400 to-purple-400; */
-/* } */
