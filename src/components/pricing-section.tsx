@@ -1,9 +1,8 @@
 import React from "react";
-import { Card,   Tabs, Chip, Tab, cn, CardHeader, CardFooter, Button } from "@heroui/react";
-import { AnimatePresence, motion, } from "framer-motion";
+import { Card, Tabs, Chip, Tab, cn, CardHeader, CardFooter, Button } from "@heroui/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const PricingSection: React.FC = () => {
-
   return (
     <section id="pricing" className="section-padding">
       <div className="container-custom">
@@ -28,32 +27,34 @@ export const PricingSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className = 'flex-center w-full'><Pricing 
-            className ="lg:w-[768px] xl:w-[1024px]"
-            plans={[
-              {
-                monthlyPrice: '$0.00',
-                name: 'Free',
-                yearlyPrice: '$0.00'
-              },
-              {
-                monthlyPrice: '$9.99',
-                name: 'Starter',
-                popular: true,
-                yearlyPrice: '$99.99'
-              },
-              {
-                monthlyPrice: '$19.99',
-                name: 'Pro',
-                yearlyPrice: '$199.99'
-              }
-            ]} /></div>
+          <div className="flex-center w-full">
+            <Pricing
+              className="lg:w-[768px] xl:w-[1024px]"
+              plans={[
+                {
+                  monthlyPrice: "$0.00",
+                  name: "Free",
+                  yearlyPrice: "$0.00",
+                },
+                {
+                  monthlyPrice: "$9.99",
+                  name: "Starter",
+                  popular: true,
+                  yearlyPrice: "$99.99",
+                },
+                {
+                  monthlyPrice: "$19.99",
+                  name: "Pro",
+                  yearlyPrice: "$199.99",
+                },
+              ]}
+            />
+          </div>
         </motion.div>
       </div>
     </section>
   );
 };
-
 
 interface Plan {
   name: string;
@@ -66,7 +67,7 @@ interface PricingProps {
   plans: Plan[];
   onPlanSelect?: (plan: string) => void;
   onCycleChange?: (cycle: "Monthly" | "Yearly") => void;
-  className? : string
+  className?: string;
 }
 
 export default function Pricing({ plans, className }: PricingProps) {
@@ -78,25 +79,28 @@ export default function Pricing({ plans, className }: PricingProps) {
   };
 
   return (
-    <Card
-      className={cn(
-        "mx-auto p-5 rounded-lg w-full",className
-      )}
-    >
-      
-      <CardHeader className = 'justify-center pb-8'><Tabs classNames ={{tabList : 'p-1.5', tabContent : "text-xl py-3 px-5"}} selectedKey={billing} onSelectionChange={(e) => setBilling(e as any)} size ='lg' radius = 'full'>
-        {["Monthly", "Yearly"].map((duration) => (
-          <Tab key={duration} title ={ duration } />
-        ))}
-      </Tabs></CardHeader>
+    <Card className={cn("mx-auto w-full rounded-lg p-5", className)}>
+      <CardHeader className="justify-center pb-8">
+        <Tabs
+          classNames={{ tabList: "p-1.5", tabContent: "text-xl py-3 px-5" }}
+          selectedKey={billing}
+          onSelectionChange={(e) => setBilling(e as any)}
+          size="lg"
+          radius="full"
+        >
+          {["Monthly", "Yearly"].map((duration) => (
+            <Tab key={duration} title={duration} />
+          ))}
+        </Tabs>
+      </CardHeader>
 
       {plans.map((plan) => (
         <motion.div
           key={plan.name}
           className={cn(
             "relative mb-3 cursor-pointer border-2 border-divider p-4",
-            'rounded-lg',
-            selectedPlan === plan.name ? "bg-content2" : "bg-default-50",
+            "rounded-lg",
+            selectedPlan === plan.name ? "bg-content2" : "bg-default-50"
           )}
           onClick={() => handlePlanSelect(plan.name)}
           whileHover={{ scale: 1.02 }}
@@ -106,10 +110,7 @@ export default function Pricing({ plans, className }: PricingProps) {
           <AnimatePresence>
             {selectedPlan === plan.name && (
               <motion.div
-                className={cn(
-                  "absolute inset-0 border-4 border-primary",
-                  'rounded-lg',
-                )}
+                className={cn("absolute inset-0 border-4 border-primary", "rounded-lg")}
                 layoutId="selectedPlanBorder"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -122,13 +123,15 @@ export default function Pricing({ plans, className }: PricingProps) {
             <div>
               <span className="font-bold">{plan.name}</span>
               {plan.popular && (
-                <Chip color = 'primary' className = 'ml-4' size= 'sm' >Popular</Chip>
+                <Chip color="primary" className="ml-4" size="sm">
+                  Popular
+                </Chip>
               )}
             </div>
             <motion.div
               className={cn(
                 "flex h-6 w-6 items-center justify-center rounded-full border-2",
-                selectedPlan === plan.name ? "border-primary bg-primary" : "border-default-500",
+                selectedPlan === plan.name ? "border-primary bg-primary" : "border-default-500"
               )}
               animate={{ scale: selectedPlan === plan.name ? 1 : 0.8 }}
             >
@@ -152,7 +155,9 @@ export default function Pricing({ plans, className }: PricingProps) {
       ))}
 
       <CardFooter>
-        <Button variant = 'shadow' size = 'lg' color = 'primary' className = 'w-full'>Get Started</Button>
+        <Button variant="shadow" size="lg" color="primary" className="w-full">
+          Get Started
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -208,4 +213,3 @@ function AnimatedPrice({
     </div>
   );
 }
-

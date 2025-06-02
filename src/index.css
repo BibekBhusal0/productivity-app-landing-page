@@ -12,8 +12,8 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-tr from-primary-500 from-10% to-danger-500 to-80% via-success-400 via-40%; 
-    @apply bg-clip-text text-transparent p-1;
+    @apply bg-gradient-to-tr from-primary-500 from-10% via-success-400 via-40% to-danger-500 to-80%;
+    @apply bg-clip-text p-1 text-transparent;
   }
 
   .section-padding {
@@ -21,7 +21,7 @@
   }
 
   .container-custom {
-    @apply container mx-auto px-4 md:px-8 overflow-hidden;
+    @apply container mx-auto overflow-hidden px-4 md:px-8;
   }
 
   .bg-gradient {

@@ -33,7 +33,9 @@ function App() {
       <CtaSection />
       <Footer />
 
-      <div className='fixed z-30 bottom-5 right-8'><FloatingButton /></div>
+      <div className="fixed bottom-5 right-8 z-30">
+        <FloatingButton />
+      </div>
     </div>
   );
 }

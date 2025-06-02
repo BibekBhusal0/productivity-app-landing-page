@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, AvatarGroup, Button,  cn } from "@heroui/react";
+import { Avatar, AvatarGroup, Button, cn } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { ThemeAwareSparkles } from "./ui/sparkles";
@@ -112,10 +112,7 @@ export const HeroSection: React.FC = () => {
             ease: [0.16, 1, 0.3, 1],
           }}
         >
-          <AvatarGroup 
-            isBordered
-            color= 'primary'
-            className="pb-1">
+          <AvatarGroup isBordered color="primary" className="pb-1">
             {[1, 2, 3, 4].map((i) => (
               <Avatar
                 key={i}

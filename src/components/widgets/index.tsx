@@ -22,12 +22,12 @@ const widgetLayout = [
 ];
 
 export default function WidgetsPreview() {
-  const [widgetOrder,] = React.useState(widgets.map(w => w.id));
+  const [widgetOrder] = React.useState(widgets.map((w) => w.id));
 
   return (
     <div className="overflow-visible p-2">
       <SwapyLayout id="widget-layout" config={{ swapMode: "hover" }}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+        <div className="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-3">
           {widgetOrder.map((widgetId, index) => {
             const widget = widgets.find((w) => w.id === widgetId);
             if (!widget) return null;
@@ -36,9 +36,12 @@ export default function WidgetsPreview() {
               <SwapySlot
                 key={widget.id}
                 id={widget.id}
-                className={cn("rounded-md size-full", layoutClass)}
+                className={cn("size-full rounded-md", layoutClass)}
               >
-                <SwapyItem id={widget.id} className="cursor-grab rounded-md active:cursor-grabbing size-full flex flex-col">
+                <SwapyItem
+                  id={widget.id}
+                  className="flex size-full cursor-grab flex-col rounded-md active:cursor-grabbing"
+                >
                   {widget.component}
                 </SwapyItem>
               </SwapySlot>
@@ -49,4 +52,3 @@ export default function WidgetsPreview() {
     </div>
   );
 }
-

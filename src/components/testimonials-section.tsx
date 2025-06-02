@@ -125,7 +125,7 @@ export const TestimonialsSection: React.FC = () => {
 
         <div className="relative">
           <motion.div
-            className="grid grid-cols-1 gap-6 md:grid-cols-3 md:h-60"
+            className="grid grid-cols-1 gap-6 md:h-60 md:grid-cols-3"
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -156,8 +156,12 @@ export const TestimonialsSection: React.FC = () => {
                       {[...Array(5)].map((_, i) => (
                         <Icon
                           key={i}
-                          icon={ i < testimonial.rating ? "fluent:star-24-filled" : "fluent:star-24-regular" }
-                          className='text-warning'
+                          icon={
+                            i < testimonial.rating
+                              ? "fluent:star-24-filled"
+                              : "fluent:star-24-regular"
+                          }
+                          className="text-warning"
                         />
                       ))}
                     </div>

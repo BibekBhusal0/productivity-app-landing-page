@@ -9,7 +9,7 @@ import {
   Tabs,
   Tab,
   Divider,
-  Link
+  Link,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 
@@ -17,15 +17,14 @@ interface AuthModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
   initialMode?: "login" | "signup";
-  showTabs?: boolean
+  showTabs?: boolean;
 }
 
 export const AuthModal: React.FC<AuthModalProps> = ({
   isOpen,
   onOpenChange,
-  initialMode = 'login',
-  showTabs = true
-
+  initialMode = "login",
+  showTabs = true,
 }) => {
   const [selected, setSelected] = React.useState(initialMode);
 
@@ -47,36 +46,41 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1 text-center">
-              <div className="flex justify-center mb-2">
-                <Icon icon="lucide:focus" className="text-primary text-2xl" />
+              <div className="mb-2 flex justify-center">
+                <Icon icon="lucide:focus" className="text-2xl text-primary" />
               </div>
               <h2 className="text-xl font-bold">Welcome to Focusly</h2>
               <p className="text-sm text-foreground-500">
                 {selected === "login"
                   ? "Sign in to continue to your account"
-                  : "Create an account to get started"
-                }
+                  : "Create an account to get started"}
               </p>
             </ModalHeader>
             <ModalBody className="px-6 py-4">
-              {showTabs && <Tabs
-                selectedKey={selected}
-                onSelectionChange={setSelected as any}
-                aria-label="Authentication options"
-              >
-                <Tab key="login" title="Login"/>
-                <Tab key="signup" title="Sign Up"/>
-              </Tabs>}
-              <div  className="py-4 flex flex-col gap-2">
-      <SocialButtons />
+              {showTabs && (
+                <Tabs
+                  selectedKey={selected}
+                  onSelectionChange={setSelected as any}
+                  aria-label="Authentication options"
+                >
+                  <Tab key="login" title="Login" />
+                  <Tab key="signup" title="Sign Up" />
+                </Tabs>
+              )}
+              <div className="flex flex-col gap-2 py-4">
+                <SocialButtons />
 
-      <div className="flex items-center gap-2">
-        <Divider className="flex-1" />
-        <span className="text-xs text-foreground-500">OR</span>
-        <Divider className="flex-1" />
-      </div>
-                {selected === 'login'? <LoginForm onClose = {onClose} /> : <SignupForm onClose = { onClose } />}</div>
-              
+                <div className="flex items-center gap-2">
+                  <Divider className="flex-1" />
+                  <span className="text-xs text-foreground-500">OR</span>
+                  <Divider className="flex-1" />
+                </div>
+                {selected === "login" ? (
+                  <LoginForm onClose={onClose} />
+                ) : (
+                  <SignupForm onClose={onClose} />
+                )}
+              </div>
             </ModalBody>
           </>
         )}
@@ -87,18 +91,18 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
 const SocialButtons: React.FC = () => {
   return (
-    <div className="flex flex-col gap-3 w-full mt-2 mb-4">
+    <div className="mb-4 mt-2 flex w-full flex-col gap-3">
       <Button
         startContent={<Icon icon="logos:google-icon" />}
         variant="bordered"
-        size= 'lg'
+        size="lg"
         className="w-full"
       >
         Continue with Google
       </Button>
       <Button
         startContent={<Icon icon="logos:facebook" />}
-        size= 'lg'
+        size="lg"
         variant="bordered"
         className="w-full"
       >
@@ -126,47 +130,55 @@ const LoginForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
+    <form onSubmit={handleSubmit} className="mt-2 flex flex-col gap-4">
+      <Input
+        label="Email"
+        placeholder="Enter your email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        variant="bordered"
+        isRequired
+        startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
+      />
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
-        <Input
-          label="Email"
-          placeholder="Enter your email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          variant="bordered"
-          isRequired
-          startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
-        />
+      <Input
+        label="Password"
+        placeholder="Enter your password"
+        type={isPasswordVisible ? "text" : "password"}
+        endContent={
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setIsPasswordVisible((prev) => !prev);
+            }}
+          >
+            <Icon className="text-xl" icon={isPasswordVisible ? "lucide:eye-off" : "lucide:eye"} />
+          </button>
+        }
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        variant="bordered"
+        isRequired
+        startContent={<Icon icon="lucide:lock" className="text-foreground-400" />}
+      />
 
-        <Input
-          label="Password"
-          placeholder="Enter your password"
-          type={isPasswordVisible? 'text' : "password" }
-        endContent = {<button onClick = {(e) =>{e.preventDefault() ; setIsPasswordVisible(prev=> !prev) }} ><Icon className = 'text-xl' icon = {isPasswordVisible? "lucide:eye-off": "lucide:eye"} /></button>}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          variant="bordered"
-          isRequired
-          startContent={<Icon icon="lucide:lock" className="text-foreground-400" />}
-        />
+      <div className="flex justify-end">
+        <Link href="#" size="sm" className="text-primary">
+          Forgot password?
+        </Link>
+      </div>
 
-        <div className="flex justify-end">
-          <Link href="#" size="sm" className="text-primary">
-            Forgot password?
-          </Link>
-        </div>
-
-        <Button
-          type="submit"
-          color="primary"
-          className="mt-2 font-medium"
-          isLoading={isLoading}
-          fullWidth
-        >
-          {isLoading ? "Logging in..." : "Login"}
-        </Button>
-      </form>
+      <Button
+        type="submit"
+        color="primary"
+        className="mt-2 font-medium"
+        isLoading={isLoading}
+        fullWidth
+      >
+        {isLoading ? "Logging in..." : "Login"}
+      </Button>
+    </form>
   );
 };
 
@@ -189,53 +201,70 @@ const SignupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
-        <Input
-          label="Full Name"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          variant="bordered"
-          isRequired
-          startContent={<Icon icon="lucide:user" className="text-foreground-400" />}
-        />
+    <form onSubmit={handleSubmit} className="mt-2 flex flex-col gap-4">
+      <Input
+        label="Full Name"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        variant="bordered"
+        isRequired
+        startContent={<Icon icon="lucide:user" className="text-foreground-400" />}
+      />
 
-        <Input
-          label="Email"
-          placeholder="Enter your email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          variant="bordered"
-          isRequired
-          startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
-        />
+      <Input
+        label="Email"
+        placeholder="Enter your email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        variant="bordered"
+        isRequired
+        startContent={<Icon icon="lucide:mail" className="text-foreground-400" />}
+      />
 
-        <Input
-          label="Password"
-          placeholder="Create a password"
-          type={isPasswordVisible? 'text' : "password" }
-        endContent = {<button onClick = {(e) =>{e.preventDefault() ; setIsPasswordVisible(prev=> !prev) }} ><Icon className = 'text-xl' icon = {isPasswordVisible? "lucide:eye-off": "lucide:eye"} /></button>}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          variant="bordered"
-          isRequired
-          startContent={<Icon icon="lucide:lock" className="text-foreground-400" />}
-        />
+      <Input
+        label="Password"
+        placeholder="Create a password"
+        type={isPasswordVisible ? "text" : "password"}
+        endContent={
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setIsPasswordVisible((prev) => !prev);
+            }}
+          >
+            <Icon className="text-xl" icon={isPasswordVisible ? "lucide:eye-off" : "lucide:eye"} />
+          </button>
+        }
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        variant="bordered"
+        isRequired
+        startContent={<Icon icon="lucide:lock" className="text-foreground-400" />}
+      />
 
-        <p className="text-xs text-foreground-500">
-          By signing up, you agree to our <Link href="#" size="sm">Terms of Service</Link> and <Link href="#" size="sm">Privacy Policy</Link>.
-        </p>
+      <p className="text-xs text-foreground-500">
+        By signing up, you agree to our{" "}
+        <Link href="#" size="sm">
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link href="#" size="sm">
+          Privacy Policy
+        </Link>
+        .
+      </p>
 
-        <Button
-          type="submit"
-          color="primary"
-          className="mt-2 font-medium"
-          isLoading={isLoading}
-          fullWidth
-        >
-          {isLoading ? "Creating account..." : "Create Account"}
-        </Button>
-      </form>
+      <Button
+        type="submit"
+        color="primary"
+        className="mt-2 font-medium"
+        isLoading={isLoading}
+        fullWidth
+      >
+        {isLoading ? "Creating account..." : "Create Account"}
+      </Button>
+    </form>
   );
 };

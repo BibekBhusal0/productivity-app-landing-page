@@ -51,11 +51,18 @@ export const IntegrationsSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {integrations.map((integration, index) => (
-            <motion.div key={index} variants={item} className="flex flex-col items-center gap-3 group">
-              <div className={cn("flex-center size-16 rounded-xl border border-divider md:h-20 md:w-20",
-                "bg-gradient-to-br from-primary-100 to-primary-200 shadow-sm dark:from-primary-900 dark:to-primary-800", 
-                "group-hover:grayscale-0 grayscale transition-all group-hover:scale-110"
-              )}>
+            <motion.div
+              key={index}
+              variants={item}
+              className="group flex flex-col items-center gap-3"
+            >
+              <div
+                className={cn(
+                  "flex-center size-16 rounded-xl border border-divider md:h-20 md:w-20",
+                  "bg-gradient-to-br from-primary-100 to-primary-200 shadow-sm dark:from-primary-900 dark:to-primary-800",
+                  "grayscale transition-all group-hover:scale-110 group-hover:grayscale-0"
+                )}
+              >
                 <Icon icon={integration.icon} className="text-4xl md:text-5xl" />
               </div>
               <p className="text-sm font-medium">{integration.name}</p>

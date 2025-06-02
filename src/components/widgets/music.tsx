@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {  Image, Button,  } from "@heroui/react";
+import { Image, Button } from "@heroui/react";
 import { Music, Music2, Music3, Pause, Play, SkipBack, SkipForward } from "lucide-react";
 import { cn } from "@heroui/react";
 
@@ -29,12 +29,11 @@ export function MusicWidget() {
   const { title, artist } = song;
 
   return (
-
-    <div className="grid grid-cols-6 md:grid-cols-12 gap-3 md:gap-4 items-center justify-center rounded-xs p-2 border-small rounded-medium text-warning-600 bg-warning-50 border-warning-200 overflow-hidden size-full">
+    <div className="rounded-xs grid size-full grid-cols-6 items-center justify-center gap-3 overflow-hidden rounded-medium border-small border-warning-200 bg-warning-50 p-2 text-warning-600 md:grid-cols-12 md:gap-4">
       <div className="relative col-span-6 md:col-span-6">
         <Image
           alt="Album cover"
-          className="object-cover z-0"
+          className="z-0 object-cover"
           isBlurred
           height={200}
           shadow="md"
@@ -42,11 +41,11 @@ export function MusicWidget() {
           width="100%"
         />
       </div>
-      <div className="flex flex-col col-span-6 md:col-span-6 h-full justify-between ">
-        <div className="flex justify-between items-start">
+      <div className="col-span-6 flex h-full flex-col justify-between md:col-span-6">
+        <div className="flex items-start justify-between">
           <div className="flex flex-col">
-            <h3 className="font-semibold text-xl">{title}</h3>
-            <h1 className="font-medium text-foreground ">{artist}</h1>
+            <h3 className="text-xl font-semibold">{title}</h3>
+            <h1 className="font-medium text-foreground">{artist}</h1>
           </div>
 
           <div className={"flex h-fit w-12 flex-wrap justify-center gap-1"}>
@@ -75,32 +74,23 @@ export function MusicWidget() {
               })}
             />
           </div>
-
         </div>
         <div className="flex-center w-full">
-          <Button
-            isIconOnly
-            radius="full"
-            variant="light"
-            onPress={handlePrev}
-          >
-            <SkipBack size={20} className = 'fill-white' />
+          <Button isIconOnly radius="full" variant="light" onPress={handlePrev}>
+            <SkipBack size={20} className="fill-white" />
           </Button>
           <Button isIconOnly radius="full" variant="light" onPress={handleClick}>
-            {!play ? ( <Play className = 'fill-white' size={25}/> ) : ( <Pause className = 'fill-white' size={25}/> )}
+            {!play ? (
+              <Play className="fill-white" size={25} />
+            ) : (
+              <Pause className="fill-white" size={25} />
+            )}
           </Button>
-          <Button
-            isIconOnly
-            radius="full"
-            variant="light"
-            onPress={handleNext}
-          >
-            <SkipForward size={25} className = 'fill-white' />
+          <Button isIconOnly radius="full" variant="light" onPress={handleNext}>
+            <SkipForward size={25} className="fill-white" />
           </Button>
-
         </div>
       </div>
     </div>
-
   );
 }

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Tabs, Tab,  Chip, } from "@heroui/react";
+import { Tabs, Tab, Chip } from "@heroui/react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import CardSpread from "./spread-card";
@@ -12,17 +12,18 @@ type contentType = {
   features: { icon: string; text: string }[];
 };
 type tabContentType = {
-  title: string,
-  icon: string,
-  content: contentType
-}
+  title: string;
+  icon: string;
+  content: contentType;
+};
 
 export const DemoSection: React.FC = () => {
   const [selected, setSelected] = React.useState("tasks");
 
   const tabContent: tabContentType[] = [
     {
-      title: 'Task', icon: 'lucide:check-square',
+      title: "Task",
+      icon: "lucide:check-square",
       content: {
         title: "Smart Task Management",
         description:
@@ -31,11 +32,17 @@ export const DemoSection: React.FC = () => {
           { icon: "lucide:repeat", text: "Recurring tasks" },
           { icon: "lucide:tag", text: "Smart categorization" },
         ],
-        preview: <div className = 'w-full py-4 flex-center'><CardSpread /></div>
-      }
+        preview: (
+          <div className="flex-center w-full py-4">
+            <CardSpread />
+          </div>
+        ),
+      },
     },
     {
-      title: "Heome", icon: 'lucide:home', content: {
+      title: "Heome",
+      icon: "lucide:home",
+      content: {
         title: "Customizable Home page",
         description:
           "Fully customizable home page with different widgets and drag and drop fetures. elit sit labore ut magna et dolor tempor aliqua do ",
@@ -44,13 +51,13 @@ export const DemoSection: React.FC = () => {
           { icon: "lucide:layout-grid", text: "Many widgets" },
           { icon: "lucide:share", text: "Sharing your Home" },
         ],
-        preview: <WidgetsPreview />
-      }
+        preview: <WidgetsPreview />,
+      },
     },
   ];
 
   return (
-    <section id="demo" className="section-padding bg-content1 overflow-hidden">
+    <section id="demo" className="section-padding overflow-hidden bg-content1">
       <div className="container-custom overflow-visible">
         <motion.div
           className="mb-8 text-center"
@@ -80,10 +87,20 @@ export const DemoSection: React.FC = () => {
             color="primary"
             items={tabContent}
           >
-            {(items => <Tab key={items.title} title={<div className='text-lg flex-center gap-2'>
-              <Icon icon={items.icon} />
-              <span>{items.title}</span>
-            </div >}> <DemoTabContent content={items.content} /> </Tab>)}
+            {(items) => (
+              <Tab
+                key={items.title}
+                title={
+                  <div className="flex-center gap-2 text-lg">
+                    <Icon icon={items.icon} />
+                    <span>{items.title}</span>
+                  </div>
+                }
+              >
+                {" "}
+                <DemoTabContent content={items.content} />{" "}
+              </Tab>
+            )}
           </Tabs>
         </motion.div>
       </div>
@@ -99,9 +116,7 @@ const DemoTabContent = ({ content }: { content: contentType }) => {
         <p className="text-foreground-600">{content.description}</p>
         <div className="flex gap-2">
           {content.features.map((feature, index) => (
-            <Chip key={index} color = 'primary' size = 'md' startContent ={
-              <Icon icon={feature.icon} />
-            }>
+            <Chip key={index} color="primary" size="md" startContent={<Icon icon={feature.icon} />}>
               {feature.text}
             </Chip>
           ))}
@@ -117,7 +132,5 @@ const DemoTabContent = ({ content }: { content: contentType }) => {
         {content.preview}
       </motion.div>
     </div>
-
-
   );
 };

@@ -43,11 +43,12 @@ export const FeaturesSection: React.FC = () => {
   );
 
   const container = {
-    hidden: { opacity: 0 , y:20 },
+    hidden: { opacity: 0, y: 20 },
     show: {
-      opacity: 1,y:0,
+      opacity: 1,
+      y: 0,
       transition: {
-        duration: 0.5
+        duration: 0.5,
       },
     },
   };
@@ -89,39 +90,38 @@ export const FeaturesSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <motion.div
-            variants={container}
-            initial="hidden"
-            animate= 'show'
-        ><SwapyLayout id="swapy" config={{ swapMode: "hover" }}>
-          <div
-            className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
-          >
-            {slottedItems.map(({ itemId }) => {
-              const feature = features.find((i) => i.id === itemId);
-              if (!feature) return null;
-              return (
-                <SwapySlot key={itemId} id={itemId} className="rounded-md">
-                  <SwapyItem id={itemId} className="cursor-grab rounded-md active:cursor-grabbing">
-                    <motion.div
-                      key={itemId}
-                      variants={item}
-                      animate= 'show'
-                      whileHover="hover"
-                      className="flex h-full flex-col gap-4 rounded-lg border border-divider bg-default-100 p-6 shadow-sm transition-shadow focus-within:cursor-grabbing hover:shadow-lg"
+        <motion.div variants={container} initial="hidden" animate="show">
+          <SwapyLayout id="swapy" config={{ swapMode: "hover" }}>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {slottedItems.map(({ itemId }) => {
+                const feature = features.find((i) => i.id === itemId);
+                if (!feature) return null;
+                return (
+                  <SwapySlot key={itemId} id={itemId} className="rounded-md">
+                    <SwapyItem
+                      id={itemId}
+                      className="cursor-grab rounded-md active:cursor-grabbing"
                     >
-                      <div className="bg-gradient flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white">
-                        <Icon icon={feature.icon} className="text-2xl" />
-                      </div>
-                      <h3 className="text-xl font-semibold">{feature.title}</h3>
-                      <p className="text-foreground-600">{feature.description}</p>
-                    </motion.div>
-                  </SwapyItem>
-                </SwapySlot>
-              );
-            })}
-          </div>
-        </SwapyLayout></motion.div>
+                      <motion.div
+                        key={itemId}
+                        variants={item}
+                        animate="show"
+                        whileHover="hover"
+                        className="flex h-full flex-col gap-4 rounded-lg border border-divider bg-default-100 p-6 shadow-sm transition-shadow focus-within:cursor-grabbing hover:shadow-lg"
+                      >
+                        <div className="bg-gradient flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white">
+                          <Icon icon={feature.icon} className="text-2xl" />
+                        </div>
+                        <h3 className="text-xl font-semibold">{feature.title}</h3>
+                        <p className="text-foreground-600">{feature.description}</p>
+                      </motion.div>
+                    </SwapyItem>
+                  </SwapySlot>
+                );
+              })}
+            </div>
+          </SwapyLayout>
+        </motion.div>
       </div>
     </section>
   );
