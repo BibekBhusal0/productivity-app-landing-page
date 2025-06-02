@@ -12,7 +12,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-tr  from-10% to-80%  from-[#5EA2EF] to-[#0072F5];;
+    @apply bg-gradient-to-tr from-[#5EA2EF] from-10% to-[#0072F5] to-80%;
     @apply bg-clip-text p-1 text-transparent;
   }
 
