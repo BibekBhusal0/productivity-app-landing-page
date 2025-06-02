@@ -4,9 +4,9 @@ import { Music, Music2, Music3, Pause, Play, SkipBack, SkipForward } from "lucid
 import { cn } from "@heroui/react";
 
 const songs = [
+  { title: "Take on me", artist: "A-ha" },
   { title: "Never gonna give you up", artist: "Rick Astley" },
   { title: "It must have been love", artist: "Roxette" },
-  { title: "Take on me", artist: "A-ha" },
 ];
 
 export function MusicWidget() {
@@ -34,7 +34,7 @@ export function MusicWidget() {
       <div className="relative col-span-6 md:col-span-6">
         <Image
           alt="Album cover"
-          className="object-cover"
+          className="object-cover z-0"
           isBlurred
           height={200}
           shadow="md"
