@@ -33,7 +33,7 @@ export const HowItWorksSection: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="section-padding">
+    <section id="how-it-works" className="section-padding bg-content2">
       <div className="container-custom">
         <motion.div
           className="mb-16 text-center"
