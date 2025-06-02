@@ -11,7 +11,7 @@ export const TodoWidget = ({ initialTasks, title, className, }: taskWidgetProps)
     )}>
       {title && <div className="text-xl">{title}</div>}
       {initialTasks.map((task, i) =>
-        <Checkbox lineThrough size='md' defaultChecked={task.done} key={i} >{task.title}</Checkbox>
+        <Checkbox color = 'secondary' lineThrough size='md' defaultChecked={task.done} key={i} >{task.title}</Checkbox>
       )}
     </div>
   );
