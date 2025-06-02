@@ -62,6 +62,13 @@ const features: featureType[] = [
       "Get intelligent notifications that know when to alert you based on priority and your focus state.",
     color: 'warning'
   },
+  {
+    icon: "lucide:grid",
+    title: "Customizable Widgets",
+    description:
+    "Customize your home page with widgets, they can be drag and drop, moted and places anywhere.",
+    color: 'danger'
+  },
 ];
 
 export const FeaturesSection: React.FC = () => {
