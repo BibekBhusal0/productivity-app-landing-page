@@ -18,8 +18,6 @@ type tabContentType = {
 };
 
 export const DemoSection: React.FC = () => {
-  const [selected, setSelected] = React.useState("tasks");
-
   const tabContent: tabContentType[] = [
     {
       title: "Task",
@@ -82,8 +80,6 @@ export const DemoSection: React.FC = () => {
         >
           <Tabs
             aria-label="Focusly Features"
-            selectedKey={selected}
-            onSelectionChange={setSelected as any}
             color="primary"
             items={tabContent}
           >
@@ -97,8 +93,7 @@ export const DemoSection: React.FC = () => {
                   </div>
                 }
               >
-                {" "}
-                <DemoTabContent content={items.content} />{" "}
+                <DemoTabContent content={items.content} />
               </Tab>
             )}
           </Tabs>
