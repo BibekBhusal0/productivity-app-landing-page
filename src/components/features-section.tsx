@@ -1,128 +1,102 @@
 import React from "react";
+import { ReactLenis } from 'lenis/react';
+import { Button, cn } from '@heroui/react';
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import { SwapyItem, SwapyLayout, SwapySlot } from "./ui/swapy";
-import { SlotItemMapArray, utils } from "swapy";
 
-const features = [
+type allColors = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'default'
+type featureType = { icon: string, title: string, description: string, color: allColors }
+
+type colorClasses = { icon?: string, main?: string, }
+const colors : Record<allColors, colorClasses> = {
+  primary: {
+    main: 'border-primary-200 bg-primary-50 p-2 text-primary-600',
+    icon : 'bg-gradient-to-br from-primary-400 to-primary-600'
+  },
+  secondary: {
+    main: 'border-secondary-200 bg-secondary-50 p-2 text-secondary-600',
+    icon: 'bg-gradient-to-br from-secondary-400 to-secondary-600'
+  },
+  success: {
+    main: 'border-success-200 bg-success-50 p-2 text-success-600',
+    icon: 'bg-gradient-to-br from-success-400 to-success-600'
+  },
+  warning: {
+    main: 'border-warning-200 bg-warning-50 p-2 text-warning-600',
+    icon: 'bg-gradient-to-br from-warning-400 to-warning-600',
+  },
+  danger: {
+    main: 'border-danger-200 bg-danger-50 p-2 text-danger-600',
+    icon: 'bg-gradient-to-br from-danger-400 to-danger-600'
+  },
+  default: {
+    main: 'border-default-200 bg-default-50 p-2 text-default-600',
+    icon: 'bg-gradient-to-br from-default-400 to-default-600'
+  },
+}
+const features: featureType[] = [
   {
-    id: "1",
     icon: "lucide:check-square",
     title: "Task Management",
     description:
       "Organize tasks with smart categories, priorities, and deadlines. Never miss an important deadline again.",
+    color: 'primary'
   },
   {
-    id: "2",
     icon: "lucide:timer",
     title: "Focus Timer",
     description:
       "Boost productivity with customizable Pomodoro timers and focus sessions tailored to your work style.",
+    color: 'secondary'
   },
   {
-    id: "3",
     icon: "lucide:calendar",
     title: "Daily Planner",
     description:
       "Plan your day with an intuitive calendar that adapts to your productivity patterns and energy levels.",
+    color: 'success'
   },
   {
-    id: "4",
     icon: "lucide:bell",
     title: "Smart Reminders",
     description:
       "Get intelligent notifications that know when to alert you based on priority and your focus state.",
+    color: 'warning'
   },
 ];
+
 export const FeaturesSection: React.FC = () => {
-  const [slotItemMap] = React.useState<SlotItemMapArray>(utils.initSlotItemMap(features, "id"));
-
-  const slottedItems = React.useMemo(
-    () => utils.toSlottedItems(features, "id", slotItemMap),
-    [features, slotItemMap]
-  );
-
-  const container = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-    hover: {
-      y: -6,
-      scale: 1.03,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-
   return (
-    <section id="features" className="section-padding overflow-x-hidden bg-content1">
-      <div className="container-custom overflow-visible">
-        <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
+    <ReactLenis root>
+      <div className='flex justify-between px-2 md:px-16 '>
+        <div className='grid gap-2'>
+          {features.map(({icon , title, description, color}, i) => (<figure key={i} className='sticky top-0 h-screen grid place-content-center'>
+            <article className={cn(
+              'h-72 w-[30rem] p-4 rounded-lg grid place-content-center gap-4',
+              colors[color].main,
+              i % 3 === 1 && 'rotate-6',
+              i % 3 === 2 && '-rotate-6'
+            )}>
+              <div className={ cn("flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white", colors[color].icon) }>
+                <Icon icon={icon} className="text-2xl" />
+              </div>
+              <h1 className='text-2xl font-semibold'>{title}</h1>
+              <p>{description}</p>
+              <Button color ={color}>Learn More</Button>
+            </article>
+          </figure>))}
+        </div>
+        <div className='sticky top-0 h-screen grid place-content-center'>
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Powerful <span className="gradient-text">Features</span> to Boost Your Productivity
           </h2>
           <p className="mx-auto max-w-2xl text-foreground-600">
             Designed to help you focus, organize, and accomplish more in less time with less stress.
           </p>
-        </motion.div>
-
-        <motion.div variants={container} initial="hidden" animate="show">
-          <SwapyLayout id="swapy" config={{ swapMode: "hover" }}>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {slottedItems.map(({ itemId }) => {
-                const feature = features.find((i) => i.id === itemId);
-                if (!feature) return null;
-                return (
-                  <SwapySlot key={itemId} id={itemId} className="rounded-md">
-                    <SwapyItem
-                      id={itemId}
-                      className="cursor-grab rounded-md active:cursor-grabbing"
-                    >
-                      <motion.div
-                        key={itemId}
-                        variants={item}
-                        animate="show"
-                        whileHover="hover"
-                        className="flex h-full flex-col gap-4 rounded-lg border border-divider bg-default-100 p-6 shadow-sm transition-shadow focus-within:cursor-grabbing hover:shadow-lg"
-                      >
-                        <div className="bg-gradient flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white">
-                          <Icon icon={feature.icon} className="text-2xl" />
-                        </div>
-                        <h3 className="text-xl font-semibold">{feature.title}</h3>
-                        <p className="text-foreground-600">{feature.description}</p>
-                      </motion.div>
-                    </SwapyItem>
-                  </SwapySlot>
-                );
-              })}
-            </div>
-          </SwapyLayout>
-        </motion.div>
+        </div>
       </div>
-    </section>
+
+
+    </ReactLenis>
   );
 };
