@@ -3,6 +3,7 @@ import { Tabs, Tab, Card, CardBody, Image } from "@heroui/react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import CardSpread from "./spread-card";
+import WidgetsPreview from "./widget-preview";
 
 export const DemoSection: React.FC = () => {
   const [selected, setSelected] = React.useState("tasks");
@@ -117,8 +118,9 @@ export const DemoSection: React.FC = () => {
         </motion.div>
       </div>
       <div className="flex-center">
-      <CardSpread />
+        <CardSpread />
       </div>
+      <WidgetsPreview />
     </section>
   );
 };

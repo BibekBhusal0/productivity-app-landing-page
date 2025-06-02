@@ -15,12 +15,12 @@ const cards = [
     revealClass: "-rotate-[2deg]",
   },
   {
-    component: <TodoWidget title='Shopping List' showDragHandle={false} initialTasks={[
-      { title: "Milk", done: true, id: '0' },
-      { title: "Eggs", done: false, id: '1' },
-      { title: "Bread", done: true, id: '2' },
-      { title: "Cheese", done: false, id: '3' },
-      { title: "Butter", done: false, id: '4' },
+    component: <TodoWidget title='Shopping List' initialTasks={[
+      { title: "Milk", done: true, },
+      { title: "Eggs", done: false, },
+      { title: "Bread", done: true, },
+      { title: "Cheese", done: false, },
+      { title: "Butter", done: false, },
     ]} />,
     rotationClass: "group-hover:rotate-[15deg]",
     revealClass: "rotate-[3deg] translate-y-2",
@@ -40,15 +40,15 @@ const cards = [
   },
 
   {
-    component: <TodoWidget showDragHandle={false}
+    component: <TodoWidget
       title="Fetures"
       initialTasks={[
-        { title: "Focus Timer", done: true, id: '0' },
-        { title: "Task Management", done: true, id: '1' },
-        { title: "Daily Planner", done: true, id: '2' },
-        { title: "Smart Reminders", done: true, id: '3' },
-        { title: "Pomodoro Timer", done: false, id: '4' },
-        { title: "Intuitive Calendar", done: false, id: '5' },
+        { title: "Focus Timer", done: true, },
+        { title: "Task Management", done: true, },
+        { title: "Daily Planner", done: true, },
+        { title: "Smart Reminders", done: true, },
+        { title: "Pomodoro Timer", done: false, },
+        { title: "Intuitive Calendar", done: false, },
       ]}
     />,
     rotationClass: "group-hover:rotate-[45deg]",
@@ -65,7 +65,7 @@ export default function CardSpread() {
       className={cn(
         "group relative flex min-h-80 items-center transition-all duration-500 ease-in-out",
         {
-          [ `origin-bottom transition-all duration-500 ease-in-out hover:-rotate-[15deg] ${cls}` ] :
+          [`origin-bottom transition-all duration-500 ease-in-out hover:-rotate-[15deg] ${cls}`]:
             !isExpanded,
           "gap-3": isExpanded,
         },
