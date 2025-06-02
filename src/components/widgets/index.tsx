@@ -5,7 +5,6 @@ import { cn } from "@heroui/react";
 import { Example1 as TodoExample1, Example2 as TodoExample2 } from "./todo";
 import { Example1 as NoteExample1, Example2 as NoteExample2 } from "./note";
 
-
 const widgets = [
   { id: "widget1", component: <TodoExample1 /> },
   { id: "widget2", component: <NoteExample1 /> },
@@ -15,11 +14,11 @@ const widgets = [
 ];
 
 const widgetLayout = [
-  "row-span-1 col-span-1",
-  "row-span-1 col-span-1",
-  "row-span-1 col-span-1",
-  "row-span-1 col-span-2",
-  "row-span-1 col-span-1",
+  "row-span-1 col-span-1 md:col-span-1",
+  "row-span-1 col-span-1 md:col-span-1",
+  "row-span-1 col-span-1 md:col-span-1",
+  "row-span-1 col-span-1 md:col-span-2",
+  "row-span-1 col-span-1 md:col-span-1",
 ];
 
 export default function WidgetsPreview() {
@@ -28,7 +27,7 @@ export default function WidgetsPreview() {
   return (
     <div className="overflow-visible p-2">
       <SwapyLayout id="widget-layout" config={{ swapMode: "hover" }}>
-        <div className="grid grid-cols-3 gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
           {widgetOrder.map((widgetId, index) => {
             const widget = widgets.find((w) => w.id === widgetId);
             if (!widget) return null;
