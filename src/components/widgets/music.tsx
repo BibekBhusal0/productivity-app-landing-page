@@ -10,7 +10,7 @@ const songs = [
   { title: "It must have been love", artist: "Roxette" },
 ];
 
-export function MusicWidget({color = 'warning'}:{color?:allColors}) {
+export function MusicWidget({ color = "warning" }: { color?: allColors }) {
   const [currentSong, setCurrentSong] = useState(0);
   const [play, setPlay] = useState(false);
 
@@ -30,7 +30,10 @@ export function MusicWidget({color = 'warning'}:{color?:allColors}) {
   const { title, artist } = song;
 
   return (
-    <Card color = {color} className="grid size-full grid-cols-6 items-center justify-center gap-3 overflow-hidden p-2 md:grid-cols-12 md:gap-4">
+    <Card
+      color={color}
+      className="grid size-full grid-cols-6 items-center justify-center gap-3 overflow-hidden p-2 md:grid-cols-12 md:gap-4"
+    >
       <div className="relative col-span-6 md:col-span-6">
         <Image
           alt="Album cover"

@@ -12,11 +12,14 @@ export const Card = extendVariants(HeroUICard, {
       default: { base: "border-default-200 bg-default-50 text-default-600" },
     },
     hover: {
-      true: { base: ' shadow-sm hover:shadow-lg transition-all translate-y-0 hover:-translate-y-4 scale-100 hover:scale-105 duration-300 motion-reduce:transition-all' },
+      true: {
+        base: " shadow-sm hover:shadow-lg transition-all translate-y-0 hover:-translate-y-4 scale-100 hover:scale-105 duration-300 motion-reduce:transition-all",
+      },
       false: {},
-    }
-  }, defaultVariants: {
-    color: 'default',
-    hover: false
-  }
+    },
+  },
+  defaultVariants: {
+    color: "default",
+    hover: false,
+  },
 });

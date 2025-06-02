@@ -1,7 +1,7 @@
 import { cn } from "@heroui/react";
 import { allColors, Card } from "../customCard";
 
-type noteWidgetProps = { notes: string[]; title?: string; className?: string, color?: allColors };
+type noteWidgetProps = { notes: string[]; title?: string; className?: string; color?: allColors };
 
 export const Example1 = () => {
   return (
@@ -29,14 +29,11 @@ export const Example2 = () => {
   );
 };
 
-export const NotesWidget = ({ notes, title, className, color = 'primary' }: noteWidgetProps) => {
+export const NotesWidget = ({ notes, title, className, color = "primary" }: noteWidgetProps) => {
   return (
     <Card
       color={color}
-      className={cn(
-        "flex size-full flex-col items-start overflow-auto px-4 py-3",
-        className
-      )}
+      className={cn("flex size-full flex-col items-start overflow-auto px-4 py-3", className)}
     >
       {title && <div className="text-xl">{title}</div>}
       {notes.map((note, i) => (

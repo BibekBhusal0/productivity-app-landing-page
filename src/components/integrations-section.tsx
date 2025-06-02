@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { Button, CardBody, cn } from "@heroui/react";
-import { Example2, Example1 } from './ui/animated-beam'
+import { Example2, Example1 } from "./ui/animated-beam";
 import { Card } from "./customCard";
 
 export const IntegrationsSection: React.FC = () => {
@@ -70,8 +70,8 @@ export const IntegrationsSection: React.FC = () => {
               <p className="text-sm font-medium">{integration.name}</p>
             </motion.div>
           ))}
-          <div className="size-full flex-center col-span-2 sm:col-span-4">
-            <Button color='primary' >More</Button>
+          <div className="flex-center col-span-2 size-full sm:col-span-4">
+            <Button color="primary">More</Button>
           </div>
         </motion.div>
 
@@ -81,17 +81,33 @@ export const IntegrationsSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="text-2xl text-center pt-12 pb-4">Example of instigation</div>
+          <div className="pb-4 pt-12 text-center text-2xl">Example of instigation</div>
         </motion.div>
         <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 p-3"
+          className="grid grid-cols-1 gap-8 p-3 md:grid-cols-2 md:gap-12"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={item} ><Card > <div className='text-xl py-3 text-center w-full'>Acts as hub for all apps</div><CardBody><Example1 /></CardBody> </Card></motion.div>
-          <motion.div variants={item} ><Card > <div className='text-xl py-3 text-center w-full'>Automate All Social Media</div><CardBody><Example2 /></CardBody> </Card></motion.div>
+          <motion.div variants={item}>
+            <Card>
+              {" "}
+              <div className="w-full py-3 text-center text-xl">Acts as hub for all apps</div>
+              <CardBody>
+                <Example1 />
+              </CardBody>{" "}
+            </Card>
+          </motion.div>
+          <motion.div variants={item}>
+            <Card>
+              {" "}
+              <div className="w-full py-3 text-center text-xl">Automate All Social Media</div>
+              <CardBody>
+                <Example2 />
+              </CardBody>{" "}
+            </Card>
+          </motion.div>
         </motion.div>
       </div>
     </section>

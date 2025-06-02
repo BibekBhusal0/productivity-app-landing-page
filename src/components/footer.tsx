@@ -139,7 +139,6 @@ export const Footer: React.FC = () => {
           <p className="mb-4 text-sm text-foreground-500 md:mb-0">
             © {new Date().getFullYear()} Focusly. All rights reserved.
           </p>
-          
         </motion.div>
       </div>
     </footer>

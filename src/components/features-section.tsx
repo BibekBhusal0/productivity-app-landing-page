@@ -60,12 +60,12 @@ export const FeaturesSection: React.FC = () => {
           {features.map(({ icon, title, description, color }, i) => (
             <div
               key={i}
-              className="sticky top-0 h-[100vh] place-content-center pt-[40vh] md:h-screen md:pt-0 pointer-events-none"
+              className="pointer-events-none sticky top-0 h-[100vh] place-content-center pt-[40vh] md:h-screen md:pt-0"
             >
               <Card
                 hover
                 className={cn(
-                  "mx-auto grid h-72 w-[30rem] max-w-[80%] place-content-center gap-4 rounded-lg p-4 hover:scale-125 hover:rotate-0 transition-all pointer-events-auto",
+                  "pointer-events-auto mx-auto grid h-72 w-[30rem] max-w-[80%] place-content-center gap-4 rounded-lg p-4 transition-all hover:rotate-0 hover:scale-125",
                   i % 3 === 1 && "rotate-6",
                   i % 3 === 2 && "-rotate-6"
                 )}
@@ -73,7 +73,7 @@ export const FeaturesSection: React.FC = () => {
               >
                 <div
                   className={cn(
-                    "flex h-12 w-12 items-center justify-center rounded-lg p-3 text-white bg-gradient-to-br ",
+                    "flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br p-3 text-white",
                     colors[color]
                   )}
                 >
@@ -98,4 +98,3 @@ export const FeaturesSection: React.FC = () => {
     </ReactLenis>
   );
 };
-
