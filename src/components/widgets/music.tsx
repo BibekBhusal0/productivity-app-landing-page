@@ -5,9 +5,9 @@ import { cn } from "@heroui/react";
 import { allColors, Card } from "../customCard";
 
 const songs = [
-  { title: "Take on me", artist: "A-ha" },
-  { title: "Never gonna give you up", artist: "Rick Astley" },
-  { title: "It must have been love", artist: "Roxette" },
+  { title: "Track 1", artist: "Artist 1" },
+  { title: "Track 2", artist: "Artist 1" },
+  { title: "Track 3", artist: "Artist 2" },
 ];
 
 export function MusicWidget({ color = "warning" }: { color?: allColors }) {
@@ -34,7 +34,7 @@ export function MusicWidget({ color = "warning" }: { color?: allColors }) {
       color={color}
       className="grid size-full grid-cols-6 items-center justify-center gap-3 overflow-hidden p-2 md:grid-cols-12 md:gap-4"
     >
-      <div className="relative col-span-6 md:col-span-6">
+      <div className="relative col-span-6">
         <Image
           alt="Album cover"
           className="z-0 object-cover"
