@@ -22,7 +22,7 @@ export const TodoWidget = ({
     >
       {title && <div className="text-xl">{title}</div>}
       {initialTasks.map((task, i) => (
-        <Checkbox color="secondary" lineThrough size="md" defaultChecked={task.done} key={i}>
+        <Checkbox color="secondary" lineThrough size="md" defaultSelected = {task.done} key={i}>
           {task.title}
         </Checkbox>
       ))}
