@@ -40,7 +40,7 @@ export default function WidgetsPreview() {
               >
                 <SwapyItem
                   id={widget.id}
-                  className="flex size-full cursor-grab flex-col rounded-md active:cursor-grabbing"
+                  className="flex size-full cursor-grab flex-col rounded-md active:cursor-grabbing relative z-0"
                 >
                   {widget.component}
                 </SwapyItem>

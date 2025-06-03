@@ -30,10 +30,11 @@ export const TodoWidget = ({
   );
 };
 
-export const Example1 = () => {
+export const Example1 = ({className }:{className?:string}) => {
   return (
     <TodoWidget
       title="Shopping List"
+      className = {className}
       initialTasks={[
         { title: "Milk", done: true },
         { title: "Eggs", done: false },
@@ -45,10 +46,11 @@ export const Example1 = () => {
   );
 };
 
-export const Example2 = () => {
+export const Example2 = ({className }:{className?:string}) => {
   return (
     <TodoWidget
       title="Fetures"
+      className = {className}
       initialTasks={[
         { title: "Focus Timer", done: true },
         { title: "Task Management", done: true },
