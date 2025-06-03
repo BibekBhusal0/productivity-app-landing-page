@@ -81,7 +81,7 @@ export const IntegrationsSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="pb-4 pt-12 text-center text-2xl">Example of instigation</div>
+          <div className="pb-4 pt-12 text-center text-2xl">Examples of integration</div>
         </motion.div>
         <motion.div
           className="grid grid-cols-1 gap-8 p-3 md:grid-cols-2 md:gap-12"
@@ -92,20 +92,18 @@ export const IntegrationsSection: React.FC = () => {
         >
           <motion.div variants={item}>
             <Card>
-              {" "}
               <div className="w-full py-3 text-center text-xl">Acts as hub for all apps</div>
               <CardBody>
                 <Example1 />
-              </CardBody>{" "}
+              </CardBody>
             </Card>
           </motion.div>
           <motion.div variants={item}>
             <Card>
-              {" "}
               <div className="w-full py-3 text-center text-xl">Automate All Social Media</div>
               <CardBody>
                 <Example2 />
-              </CardBody>{" "}
+              </CardBody>
             </Card>
           </motion.div>
         </motion.div>
