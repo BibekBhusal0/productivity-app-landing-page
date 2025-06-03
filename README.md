@@ -35,7 +35,6 @@ A modern, animated **landing page** for **Focusly**, a next-generation hypotheti
 ![How it works section](https://github.com/user-attachments/assets/b5870e8d-8879-4763-99d1-d993e67548ca)
 ![Integrations Section](https://github.com/user-attachments/assets/c4af4285-0310-4b0e-a74c-5c2b8d0e7844)
 
-
 ---
 
 ## 🚀 Getting Started
