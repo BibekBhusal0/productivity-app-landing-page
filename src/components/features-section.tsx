@@ -55,7 +55,10 @@ const features: featureType[] = [
 export const FeaturesSection: React.FC = () => {
   return (
     <ReactLenis root>
-      <section  id = "features" className="section-padding flex flex-col-reverse justify-between gap-8 px-2 md:flex-row md:px-16">
+      <section
+        id="features"
+        className="section-padding flex flex-col-reverse justify-between gap-8 px-2 md:flex-row md:px-16"
+      >
         <div>
           {features.map(({ icon, title, description, color }, i) => (
             <div

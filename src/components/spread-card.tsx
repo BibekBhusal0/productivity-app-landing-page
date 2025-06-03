@@ -4,19 +4,19 @@ import { Example1 as TodoExample1, Example2 as TodoExample2 } from "./widgets/to
 import { Example1 as NoteExample1, Example2 as NoteExample2 } from "./widgets/note";
 
 const cards = [
-  { component: < NoteExample1 />, rotationClass: "", revealClass: "-rotate-[2deg]" },
+  { component: <NoteExample1 />, rotationClass: "", revealClass: "-rotate-[2deg]" },
   {
-    component: < TodoExample1 className = 'relative z-10' />,
+    component: <TodoExample1 className="relative z-10" />,
     rotationClass: "group-hover:rotate-[15deg]",
     revealClass: "rotate-[3deg] translate-y-2",
   },
   {
-    component: < NoteExample2 />,
+    component: <NoteExample2 />,
     rotationClass: "group-hover:rotate-[30deg]",
     revealClass: "-rotate-[2deg] translate-x-1",
   },
   {
-    component: < TodoExample2 className = 'relative z-10' />,
+    component: <TodoExample2 className="relative z-10" />,
     rotationClass: "group-hover:rotate-[45deg]",
     revealClass: "rotate-[2deg]",
   },
@@ -56,7 +56,7 @@ export default function CardSpread() {
               isExpanded && item.revealClass
             )}
           >
-            { item.component }
+            {item.component}
           </div>
         );
       })}

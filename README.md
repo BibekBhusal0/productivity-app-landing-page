@@ -6,11 +6,11 @@ A modern, animated **landing page** for **Focusly**, a next-generation hypotheti
 
 ## 🌟 Highlights
 
-* 🧩 **Bento Grid Layout** showcasing widgets and core features
-* 🔄 **Floating Action Button** with quick-access options
-* ⚡ **Animated Integration Graphs** showing app connections
-* 🧠 **Framer Motion-powered transitions**
-* 🧭 Sections: Hero, Features, Demo, Integrations, FAQ, Newsletter, CTA, and more
+- 🧩 **Bento Grid Layout** showcasing widgets and core features
+- 🔄 **Floating Action Button** with quick-access options
+- ⚡ **Animated Integration Graphs** showing app connections
+- 🧠 **Framer Motion-powered transitions**
+- 🧭 Sections: Hero, Features, Demo, Integrations, FAQ, Newsletter, CTA, and more
 
 ---
 
@@ -19,19 +19,18 @@ A modern, animated **landing page** for **Focusly**, a next-generation hypotheti
 1. **Hero Section** – Title, subtitle, CTA, Sparkles animation.
 2. **Features Section** – Key productivity features explained, scroll animation
 3. **How it works** – Accordion and images screenshot for demo.
-3. **Demo** – Showing demo of productivity app, drag and drop animation included.
+4. **Demo** – Showing demo of productivity app, drag and drop animation included.
 5. **Pricing**
-7. **Testimonials** – Social proof from mock users
-6. **Integrations** – Animated graph with services (e.g., Notion, Slack, Gmail)
+6. **Testimonials** – Social proof from mock users
+7. **Integrations** – Animated graph with services (e.g., Notion, Slack, Gmail)
 8. **FAQ & Newsletter** – For user engagement and trust
 9. **Final CTA** – Push to action or download
-
 
 ---
 
 ## 🖼️ Screenshots
 
-todo 
+todo
 
 ---
 

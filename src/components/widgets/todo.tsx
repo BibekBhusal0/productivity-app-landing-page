@@ -22,7 +22,7 @@ export const TodoWidget = ({
     >
       {title && <div className="text-xl">{title}</div>}
       {initialTasks.map((task, i) => (
-        <Checkbox color="secondary" lineThrough size="md" defaultSelected = {task.done} key={i}>
+        <Checkbox color="secondary" lineThrough size="md" defaultSelected={task.done} key={i}>
           {task.title}
         </Checkbox>
       ))}
@@ -30,11 +30,11 @@ export const TodoWidget = ({
   );
 };
 
-export const Example1 = ({className }:{className?:string}) => {
+export const Example1 = ({ className }: { className?: string }) => {
   return (
     <TodoWidget
       title="Shopping List"
-      className = {className}
+      className={className}
       initialTasks={[
         { title: "Milk", done: true },
         { title: "Eggs", done: false },
@@ -46,11 +46,11 @@ export const Example1 = ({className }:{className?:string}) => {
   );
 };
 
-export const Example2 = ({className }:{className?:string}) => {
+export const Example2 = ({ className }: { className?: string }) => {
   return (
     <TodoWidget
       title="Fetures"
-      className = {className}
+      className={className}
       initialTasks={[
         { title: "Focus Timer", done: true },
         { title: "Task Management", done: true },
