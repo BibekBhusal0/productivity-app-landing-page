@@ -30,14 +30,18 @@ A modern, animated **landing page** for **Focusly**, a next-generation hypotheti
 
 ## 🖼️ Screenshots
 
-todo
+![Hero Section](https://github.com/user-attachments/assets/39c5fd3c-ae96-4c6a-b7c9-6ff780cab035)
+![Fetures section](https://github.com/user-attachments/assets/ff0c35b6-edf0-418f-bcb4-9dd8e668510d)
+![How it works section](https://github.com/user-attachments/assets/b5870e8d-8879-4763-99d1-d993e67548ca)
+![Integrations Section](https://github.com/user-attachments/assets/c4af4285-0310-4b0e-a74c-5c2b8d0e7844)
+
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-git clone productivity-app-landing-page
+git clone https://github.com/BibekBhusal0/productivity-app-landing-page
 cd productivity-app-landing-page
 npm install
 npm run dev
